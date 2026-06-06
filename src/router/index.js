@@ -21,6 +21,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // Page components
 import Dashboard from '@/pages/dashboard/Dashboard.vue'
+import CreateCategory from '@/pages/dashboard/CreateCategory.vue'
 import Login from '@/pages/auth/Login.vue'
 import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
@@ -49,6 +50,15 @@ const routes = [
    * Typically requires authentication (can add guards later)
    */
   { path: '/dashboard', component: Dashboard },
+  {
+    path: '/dashboard/category/create',
+    name: 'CreateCategory',
+    component: CreateCategory,
+    meta: {
+      requiresAuth: true,   // remove if you don't use auth guard
+      layout: 'BackLayout',  // matches your BackLayout.vue
+    },
+  },
 
   /**
    * Authentication routes
