@@ -26,6 +26,7 @@ import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
+import UserList from '@/pages/dashboard/UserList.vue'
 
 /**
  * Route definitions
@@ -43,6 +44,8 @@ const routes = [
    * Displays project structure and navigation examples
    */
   { path: '/preview', component: Preview },
+
+  { path: '/user_list', component: UserList },
 
   /**
    * Main application dashboard
