@@ -26,7 +26,7 @@ import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
-
+import New_Dashboard from '@/pages/dashboard/New_Dashboard.vue'
 /**
  * Route definitions
  * Each route maps a URL path to a specific page component
@@ -68,6 +68,7 @@ const routes = [
    * Displays a styled 404 page for unknown paths
    */
   { path: '/:pathMatch(.*)*', component: NotFound },
+  { path: '/newdashboard', component: New_Dashboard }
 ]
 
 /**
