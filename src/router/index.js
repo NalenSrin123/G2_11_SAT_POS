@@ -25,6 +25,7 @@ import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
+import Cofirm_OTP from '@/pages/auth/Cofirm_OTP.vue'
 /**
  * Route definitions
  * Each route maps a URL path to a specific page component
@@ -52,6 +53,7 @@ const routes = [
    * Authentication routes
    */
   { path: '/login', component: Login },
+  {path: '/cofirm_otp',component:Cofirm_OTP},
   { path: '/register', component: Register },
 
   /**
