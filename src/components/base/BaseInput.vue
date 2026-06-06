@@ -2,23 +2,19 @@
 |--------------------------------------------------------------------------
 | File: BaseInput.vue
 |--------------------------------------------------------------------------
-|
 | Description:
 | Reusable input component with support for v-model, validation states,
 | and optional password visibility toggle.
-|
 | Responsibilities:
 | - Provide consistent input styling across the app
 | - Support validation states (normal, error, success)
 | - Handle password visibility toggle UX
 | - Pass through native input attributes via $attrs
-|
 | Notes:
 | - Designed to be flexible and composable
 | - Extendable for labels, icons, and validation messages
 |
 */
-
 <template>
   <!-- Wrapper: enables positioning for password toggle -->
   <div class="relative w-full">

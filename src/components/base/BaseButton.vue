@@ -2,11 +2,9 @@
 |--------------------------------------------------------------------------
 | File: BaseButton.vue
 |--------------------------------------------------------------------------
-|
 | Description:
 | Reusable button component with support for loading, disabled state,
 | preset colors, and custom styling.
-|
 | Responsibilities:
 | - Provide consistent button UI across the app
 | - Handle loading + disabled states
@@ -19,7 +17,6 @@
 | - Supports native button types (button, submit, reset)
 |
 */
-
 <template>
   <!-- Base button -->
   <button
@@ -27,11 +24,9 @@
     :disabled="loading || disabled"
     :aria-disabled="loading || disabled"
     :aria-busy="loading"
-    :class="[baseClass, widthClass, colorClass]"
-  >
+    :class="[baseClass, widthClass, colorClass]">
     <!-- Loading spinner -->
     <span v-if="loading" class="animate-spin">⏳</span>
-
     <!-- Content -->
     <span class="flex items-center gap-2">
       <slot>
@@ -40,10 +35,8 @@
     </span>
   </button>
 </template>
-
 <script setup>
 import { computed } from 'vue'
-
 /*
 |--------------------------------------------------------------------------
 | Props
@@ -55,7 +48,6 @@ const props = defineProps({
     type: String,
     default: 'Button',
   },
-
   // Button type (important for forms)
   type: {
     type: String,
@@ -67,7 +59,6 @@ const props = defineProps({
     type: String,
     default: 'primary',
   },
-
   // Loading state
   loading: {
     type: Boolean,
@@ -86,7 +77,6 @@ const props = defineProps({
     default: true,
   },
 })
-
 /*
 |--------------------------------------------------------------------------
 | Base Styles

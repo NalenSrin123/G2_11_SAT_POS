@@ -10,7 +10,6 @@
 | - Map URL paths to page components
 | - Configure default entry route
 | - Organize public and feature routes
-|
 | Notes:
 | - The root path ("/") currently redirects to "/preview" for demo purposes
 | - Update the root route to Home when moving to production
@@ -26,7 +25,6 @@ import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
-
 /**
  * Route definitions
  * Each route maps a URL path to a specific page component
