@@ -26,6 +26,7 @@ import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
+import CreateMenu from '../pages/dashboard/CreateMenu.vue'
 
 /**
  * Route definitions
@@ -36,39 +37,40 @@ const routes = [
    * Default entry route
    * Redirects "/" to "/preview" to showcase the project structure
    */
-  { path: '/', redirect: '/preview' },
+  { path: "/", redirect: "/preview" },
 
   /**
    * Preview page (landing/demo screen)
    * Displays project structure and navigation examples
    */
-  { path: '/preview', component: Preview },
+  { path: "/preview", component: Preview },
 
   /**
    * Main application dashboard
    * Typically requires authentication (can add guards later)
    */
-  { path: '/dashboard', component: Dashboard },
+  { path: "/dashboard", component: Dashboard },
 
   /**
    * Authentication routes
    */
-  { path: '/login', component: Login },
-  { path: '/register', component: Register },
+  { path: "/login", component: Login },
+  { path: "/register", component: Register },
 
   /**
    * Optional home route (disabled for now)
    * Uncomment when switching from preview to real landing page
    */
   // { path: '/', component: Home },
-  { path: '/home', component: Home },
+  { path: "/home", component: Home },
 
   /**
    * Catch-all route
    * Displays a styled 404 page for unknown paths
    */
-  { path: '/:pathMatch(.*)*', component: NotFound },
-]
+  { path: "/:pathMatch(.*)*", component: NotFound },
+  { path: "/create_menu", component: CreateMenu },
+];
 
 /**
  * Router instance configuration
