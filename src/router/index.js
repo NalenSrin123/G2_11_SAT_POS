@@ -26,6 +26,7 @@ import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
+import ResetPassword from '@/pages/auth/ResetPassword.vue'
 
 /**
  * Route definitions
@@ -55,6 +56,7 @@ const routes = [
    */
   { path: '/login', component: Login },
   { path: '/register', component: Register },
+  { path: '/resetpassword', component: ResetPassword },
 
   /**
    * Optional home route (disabled for now)
