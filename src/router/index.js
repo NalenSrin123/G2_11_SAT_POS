@@ -26,6 +26,7 @@ import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
+import Order_List from '../pages/dashboard/Order_List.vue'
 
 /**
  * Route definitions
@@ -49,6 +50,7 @@ const routes = [
    * Typically requires authentication (can add guards later)
    */
   { path: '/dashboard', component: Dashboard },
+  {path: '/order_list', component: Order_List},
 
   /**
    * Authentication routes
