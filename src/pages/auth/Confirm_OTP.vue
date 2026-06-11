@@ -11,12 +11,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
           </svg>
         </div>
-
         <h2 class="text-2xl font-bold text-gray-900 mb-2">Verify Your Identity</h2>
         <p class="text-gray-500 text-sm mb-6 leading-relaxed">
           We've sent a 6-digit confirmation code to your registered email address. Please enter it below.
         </p>
-
         <div class="flex justify-center gap-2 mb-6">
           <input
             v-for="(digit, index) in 6"
@@ -70,7 +68,7 @@ const activeIndex = ref(0)
 
 const handleInput = (event, index) => {
   const val = event.target.value
-  // អនុញ្ញាតតែលេខប៉ុណ្ណោះ
+
   if (!/^\d*$/.test(val)) {
     otp[index] = ''
     return
@@ -87,8 +85,6 @@ const handleDelete = (index) => {
     inputs.value[index - 1].focus()
   }
 }
-
-// មុខងារផ្ទៀងផ្ទាត់
 const verifyOTP = () => {
   const code = otp.join('')
   if (code.length < 6) {

@@ -25,7 +25,7 @@ import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
-import Cofirm_OTP from '@/pages/auth/Cofirm_OTP.vue'
+import Confirm_OTP from '@/pages/auth/Confirm_OTP.vue'
 /**
  * Route definitions
  * Each route maps a URL path to a specific page component
@@ -42,20 +42,17 @@ const routes = [
    * Displays project structure and navigation examples
    */
   { path: '/preview', component: Preview },
-
   /**
    * Main application dashboard
    * Typically requires authentication (can add guards later)
    */
-  { path: '/dashboard', component: Dashboard },
-
+  { path: '/dashboard', component: Dashboard }, 
   /**
    * Authentication routes
    */
   { path: '/login', component: Login },
-  {path: '/cofirm_otp',component:Cofirm_OTP},
+  {path: '/confirm_otp',component:Confirm_OTP},
   { path: '/register', component: Register },
-
   /**
    * Optional home route (disabled for now)
    * Uncomment when switching from preview to real landing page
