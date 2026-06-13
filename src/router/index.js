@@ -8,6 +8,11 @@ import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
 import Configuration from '@/pages/dashboard/Configuration.vue'
 
+import Confirm_OTP from '@/pages/auth/Confirm_OTP.vue'
+/**
+ * Route definitions
+ * Each route maps a URL path to a specific page component
+ */
 const routes = [
   { path: '/', redirect: '/preview' },
 
@@ -18,6 +23,7 @@ const routes = [
   { path: '/configuration', component: Configuration },
 
   { path: '/login', component: Login },
+  {path: '/confirm_otp',component:Confirm_OTP},
   { path: '/register', component: Register },
   { path: '/home', component: Home },
 

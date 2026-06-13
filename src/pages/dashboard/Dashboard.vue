@@ -4,9 +4,7 @@
     <p>Welcome to the dashboard.</p>
   </div>
 </template>
-
 <script setup>
-// Dashboard page (Composition API)
 </script>
 
 <style scoped>
