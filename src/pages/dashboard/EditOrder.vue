@@ -143,7 +143,7 @@
               <h3 class="font-medium">
                 {{ item.name }}
               </h3>
-[6/13/2026 12:37 PM] Chea Narin: <p class="text-gray-500 text-sm">
+             <p class="text-gray-500 text-sm">
                 ${{ item.price }}
               </p>
 
