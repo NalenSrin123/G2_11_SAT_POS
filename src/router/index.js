@@ -26,6 +26,7 @@ import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
+import ListLogo from '../pages/dashboard/ListLogo.vue'
 
 /**
  * Route definitions
@@ -49,6 +50,7 @@ const routes = [
    * Typically requires authentication (can add guards later)
    */
   { path: '/dashboard', component: Dashboard },
+  { path: '/listlogo', component: Listlogo },
 
   /**
    * Authentication routes
