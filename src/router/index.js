@@ -24,6 +24,7 @@ import Dashboard from '@/pages/dashboard/Dashboard.vue'
 import Login from '@/pages/auth/Login.vue'
 import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
+import Create_Logo from '@/pages/dashboard/Create_Logo.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
 
@@ -49,6 +50,7 @@ const routes = [
    * Typically requires authentication (can add guards later)
    */
   { path: '/dashboard', component: Dashboard },
+  { path: "/createLogo", component: Create_Logo },
 
   /**
    * Authentication routes
