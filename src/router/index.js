@@ -8,7 +8,7 @@ import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
 import Configuration from '@/pages/dashboard/Configuration.vue'
 import ListLogo from '../pages/dashboard/ListLogo.vue'
-
+import unitlish from '@/pages/dashboard/unitlish.vue'
 import Confirm_OTP from '@/pages/auth/Confirm_OTP.vue'
 /**
  * Route definitions
@@ -30,6 +30,7 @@ const routes = [
   { path: '/home', component: Home },
 
   { path: '/:pathMatch(.*)*', component: NotFound },
+  { path: '/Unitlish', component: Unitlish },
 ]
 
 const router = createRouter({
