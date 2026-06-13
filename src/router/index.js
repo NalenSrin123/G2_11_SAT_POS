@@ -12,6 +12,8 @@ import unitlish from '@/pages/dashboard/unitlish.vue'
 import Confirm_OTP from '@/pages/auth/Confirm_OTP.vue'
 import New_Dashboard from '@/pages/dashboard/New_Dashboard.vue'
 import Order_List from '../pages/dashboard/Order_List.vue'
+import CategoryList from '@/pages/dashboard/CategoryList.vue'
+
 
 /**
  * Route definitions
@@ -35,7 +37,9 @@ const routes = [
 
   { path: '/:pathMatch(.*)*', component: NotFound },
   { path: '/Unitlish', component: Unitlish },
-  { path: '/newdashboard', component: New_Dashboard }
+  { path: '/newdashboard', component: New_Dashboard },
+
+  { path: '/categorylist', component: CategoryList},
 ]
 
 const router = createRouter({
