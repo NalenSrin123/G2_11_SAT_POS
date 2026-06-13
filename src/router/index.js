@@ -14,6 +14,7 @@ import New_Dashboard from '@/pages/dashboard/New_Dashboard.vue'
 import Order_List from '../pages/dashboard/Order_List.vue'
 import CategoryList from '@/pages/dashboard/CategoryList.vue'
 
+import Overview_Page from '@/pages/dashboard/Overview_Page.vue'
 
 /**
  * Route definitions
@@ -40,6 +41,7 @@ const routes = [
   { path: '/newdashboard', component: New_Dashboard },
 
   { path: '/categorylist', component: CategoryList},
+  {path: '/overview_page' , component: Overview_Page}
 ]
 
 const router = createRouter({
