@@ -1,49 +1,8 @@
 <template>
   <div class="min-h-screen bg-[#f8fafc] flex font-sans antialiased text-[#334155]">
-    
-    <aside class="w-64 bg-white border-r border-[#e2e8f0] flex flex-col p-4 shrink-0">
-      <div class="flex items-center gap-3 mb-8 px-2">
-        <div class="bg-[#0f4c81] text-white rounded-lg w-10 h-10 flex items-center justify-center shadow-sm">
-          <i class="bi bi-utensils-fill text-lg"></i>
-        </div>
-        <div>
-          <h6 class="font-bold text-sm text-[#1e293b] tracking-tight">RestoAdmin</h6>
-          <span class="text-[#64748b] block text-[11px] font-medium uppercase tracking-wider">Management Suite</span>
-        </div>
-      </div>
-
-      <nav class="flex-1 space-y-1">
-        <a v-for="item in menuItems" :key="item.name" href="#"
-           class="flex items-center gap-3.5 py-2.5 px-4 rounded-lg text-sm font-medium transition-colors group relative"
-           :class="item.active 
-             ? 'bg-[#f0f7ff] text-[#0f4c81] font-semibold after:absolute after:right-0 after:top-0 after:bottom-0 after:w-1 after:bg-[#0f4c81] after:rounded-l' 
-             : 'text-[#64748b] hover:bg-[#f8fafc] hover:text-[#1e293b]'">
-          <i :class="['bi', item.icon, 'text-lg', item.active ? 'text-[#0f4c81]' : 'text-[#94a3b8] group-hover:text-[#64748b]']"></i>
-          <span>{{ item.name }}</span>
-        </a>
-      </nav>
-    </aside>
+  
 
     <main class="flex-1 p-8 lg:p-10 max-w-7xl mx-auto w-full">
-      
-      <header class="flex justify-between items-center mb-8">
-        <div class="relative w-80">
-          <i class="bi bi-search absolute top-1/2 left-4 -translate-y-1/2 text-[#94a3b8] text-sm"></i>
-          <input type="text" 
-                 class="w-full pl-11 pr-4 py-2 bg-white border border-[#e2e8f0] rounded-xl text-sm text-[#64748b] placeholder-[#94a3b8] focus:outline-none focus:border-[#0f4c81] focus:ring-1 focus:ring-[#0f4c81] transition-all shadow-sm" 
-                 placeholder="Search brand assets...">
-        </div>
-        <div class="flex items-center gap-4">
-          <button class="w-10 h-10 bg-white border border-[#e2e8f0] rounded-full flex items-center justify-center text-[#64748b] hover:text-[#1e293b] transition-colors shadow-sm relative">
-            <i class="bi bi-bell"></i>
-            <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full"></span>
-          </button>
-          <div class="w-10 h-10 bg-[#1e293b] rounded-full flex items-center justify-center text-white text-sm font-semibold shadow-inner">
-            <i class="bi bi-person-fill"></i>
-          </div>
-        </div>
-      </header>
-
       <nav class="mb-1">
         <ol class="flex items-center gap-2 text-[11px] font-bold tracking-wider text-uppercase text-[#94a3b8]">
           <li><a href="#" class="hover:text-[#64748b] transition-colors">SETTINGS</a></li>
