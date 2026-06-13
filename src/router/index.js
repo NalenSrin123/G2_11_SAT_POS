@@ -4,6 +4,7 @@ import Dashboard from '@/pages/dashboard/Dashboard.vue'
 import Login from '@/pages/auth/Login.vue'
 import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
+import Create_Logo from '@/pages/dashboard/Create_Logo.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
 import Configuration from '@/pages/dashboard/Configuration.vue'
@@ -38,6 +39,7 @@ const routes = [
  
   { path: '/configuration', component: Configuration },
   {path: '/order_list', component: Order_List},
+  { path: "/createLogo", component: Create_Logo },
 
   { path: '/login', component: Login },
   {path: '/confirm_otp',component:Confirm_OTP},

@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <!-- <div>
     <h1>Dashboard</h1>
     <p>Welcome to the dashboard.</p>
-  </div>
+  </div> -->
+  <Create_Logo />
 </template>
 <script setup>
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
