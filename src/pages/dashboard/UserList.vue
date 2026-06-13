@@ -128,14 +128,14 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { 
-  Download as DownloadIcon, 
-  UserPlus as UserPlusIcon, 
-  SlidersHorizontal as SlidersHorizontalIcon, 
-  MoreVertical as MoreVerticalIcon,
-  ChevronLeft as ChevronLeftIcon,
-  ChevronRight as ChevronRightIcon 
-} from 'lucide-vue-next'
+// import { 
+//   Download as DownloadIcon, 
+//   UserPlus as UserPlusIcon, 
+//   SlidersHorizontal as SlidersHorizontalIcon, 
+//   MoreVertical as MoreVerticalIcon,
+//   ChevronLeft as ChevronLeftIcon,
+//   ChevronRight as ChevronRightIcon 
+// } from 'lucide-vue-next'
 
 const currentTab = ref('All Users')
 

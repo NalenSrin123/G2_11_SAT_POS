@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import { RotateCcw, Mail, ShieldCheck } from "lucide-vue-next";
+// import { RotateCcw, Mail, ShieldCheck } from "lucide-vue-next";
 
 
 </script>
