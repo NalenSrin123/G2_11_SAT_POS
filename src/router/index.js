@@ -11,6 +11,8 @@ import ListLogo from '../pages/dashboard/ListLogo.vue'
 import unitlish from '@/pages/dashboard/unitlish.vue'
 import Confirm_OTP from '@/pages/auth/Confirm_OTP.vue'
 import New_Dashboard from '@/pages/dashboard/New_Dashboard.vue'
+import Order_List from '../pages/dashboard/Order_List.vue'
+
 /**
  * Route definitions
  * Each route maps a URL path to a specific page component
@@ -24,6 +26,7 @@ const routes = [
 
  
   { path: '/configuration', component: Configuration },
+  {path: '/order_list', component: Order_List},
 
   { path: '/login', component: Login },
   {path: '/confirm_otp',component:Confirm_OTP},
