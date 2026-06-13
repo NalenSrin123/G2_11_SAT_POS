@@ -17,6 +17,7 @@ import CategoryList from '@/pages/dashboard/CategoryList.vue'
 
 import Overview_Page from '@/pages/dashboard/Overview_Page.vue'
 import UserList from '@/pages/dashboard/UserList.vue'
+import CreateUnit from '../pages/dashboard/CreateUnit.vue'
 
 /**
  * Route definitions
@@ -51,7 +52,9 @@ const routes = [
   { path: '/newdashboard', component: New_Dashboard },
 
   { path: '/categorylist', component: CategoryList},
-  {path: '/overview_page' , component: Overview_Page}
+  {path: '/overview_page' , component: Overview_Page},
+
+  {path :'/create_unitpage' , component: CreateUnit },
 ]
 
 const router = createRouter({
