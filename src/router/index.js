@@ -7,6 +7,7 @@ import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
 import Configuration from '@/pages/dashboard/Configuration.vue'
+import ListLogo from '../pages/dashboard/ListLogo.vue'
 
 import Confirm_OTP from '@/pages/auth/Confirm_OTP.vue'
 /**
@@ -18,6 +19,7 @@ const routes = [
 
   { path: '/preview', component: Preview },
   { path: '/dashboard', component: Dashboard },
+  { path: '/listlogo', component: Listlogo },
 
  
   { path: '/configuration', component: Configuration },
