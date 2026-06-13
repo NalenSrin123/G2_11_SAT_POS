@@ -20,6 +20,8 @@ import UserList from '@/pages/dashboard/UserList.vue'
 import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
 import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
 import ResetPassword from '@/pages/auth/ResetPassword.vue'
+//import { Component } from 'react'
+import Design_list_product from '@/pages/kitchen/Design_list_product.vue'
 
 /**
  * Route definitions
@@ -65,6 +67,8 @@ const routes = [
 
   {path :'/create_unitpage' , component: CreateUnit },
   { path: "/create_menu", component: CreateMenu },
+
+  {path: '/Design_List_Product' , component: Design_list_product}
 ]
 
 const router = createRouter({
