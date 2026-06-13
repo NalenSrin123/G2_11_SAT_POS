@@ -10,6 +10,7 @@ import Configuration from '@/pages/dashboard/Configuration.vue'
 import ListLogo from '../pages/dashboard/ListLogo.vue'
 import unitlish from '@/pages/dashboard/unitlish.vue'
 import Confirm_OTP from '@/pages/auth/Confirm_OTP.vue'
+import New_Dashboard from '@/pages/dashboard/New_Dashboard.vue'
 /**
  * Route definitions
  * Each route maps a URL path to a specific page component
@@ -31,6 +32,7 @@ const routes = [
 
   { path: '/:pathMatch(.*)*', component: NotFound },
   { path: '/Unitlish', component: Unitlish },
+  { path: '/newdashboard', component: New_Dashboard }
 ]
 
 const router = createRouter({
