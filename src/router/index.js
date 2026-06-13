@@ -15,6 +15,7 @@ import Order_List from '../pages/dashboard/Order_List.vue'
 import CategoryList from '@/pages/dashboard/CategoryList.vue'
 
 import Overview_Page from '@/pages/dashboard/Overview_Page.vue'
+import UserList from '@/pages/dashboard/UserList.vue'
 
 /**
  * Route definitions
@@ -24,6 +25,13 @@ const routes = [
   { path: '/', redirect: '/preview' },
 
   { path: '/preview', component: Preview },
+
+  { path: '/user_list', component: UserList },
+
+  /**
+   * Main application dashboard
+   * Typically requires authentication (can add guards later)
+   */
   { path: '/dashboard', component: Dashboard },
   { path: '/listlogo', component: Listlogo },
 
