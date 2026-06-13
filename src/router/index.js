@@ -19,6 +19,7 @@ import Overview_Page from '@/pages/dashboard/Overview_Page.vue'
 import UserList from '@/pages/dashboard/UserList.vue'
 import CreateUnit from '../pages/dashboard/CreateUnit.vue'
 import CreateMenu from '../pages/dashboard/CreateMenu.vue'
+import ResetPassword from '@/pages/auth/ResetPassword.vue'
 
 /**
  * Route definitions
@@ -46,6 +47,13 @@ const routes = [
   { path: '/login', component: Login },
   {path: '/confirm_otp',component:Confirm_OTP},
   { path: '/register', component: Register },
+  { path: '/resetpassword', component: ResetPassword },
+
+  /**
+   * Optional home route (disabled for now)
+   * Uncomment when switching from preview to real landing page
+   */
+  // { path: '/', component: Home },
   { path: '/home', component: Home },
 
   { path: '/:pathMatch(.*)*', component: NotFound },
