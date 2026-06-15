@@ -1,4 +1,5 @@
 <template>
+<new_-dashboard>
   <div class="min-h-screen bg-gray-50 p-6">
 
     <!-- Breadcrumb -->
@@ -175,11 +176,17 @@
         </div>
       </div>
     </div>
-
   </div>
+</new_-dashboard>
 </template>
 
+<script setup>
+import New_Dashboard from './New_Dashboard.vue';
+
+
+</script>
 <script>
+
 export default {
   name: 'CreateCategory',
 
