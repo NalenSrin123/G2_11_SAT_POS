@@ -36,13 +36,10 @@ npm run preview
 ## Start Your Own Project
 
 1. Remove the current Git history:
-
 ```bash
 rm -rf .git
 ```
-
 2. Initialize a new repository and push to your remote:
-
 ```bash
 git init
 git add .
@@ -98,7 +95,7 @@ For Vercel static deployments, add this rewrite to `vercel.json`:
 
 ```json
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+	"rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
 ```
 
