@@ -20,13 +20,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 // Page components
-import Dashboard from '@/pages/dashboard/Dashboard.vue'
+// import Dashboard from '@/pages/dashboard/Dashboard.vue'
 import Login from '@/pages/auth/Login.vue'
 import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
 import LanguageConfig from '@/pages/dashboard/LanguageConfig.vue'
+import Trending from '../pages/home/home/Trending.vue'
 
 
 /**
@@ -50,7 +51,7 @@ const routes = [
    * Main application dashboard
    * Typically requires authentication (can add guards later)
    */
-  { path: '/dashboard', component: Dashboard },
+  // { path: '/dashboard', component: Dashboard },
 
   /**
    * Authentication routes
@@ -64,6 +65,7 @@ const routes = [
    */
   // { path: '/', component: Home },
   { path: '/home', component: Home },
+  { path: '/home/trending', name: 'Trending', component: Trending },
 
   /**
    * Catch-all route
