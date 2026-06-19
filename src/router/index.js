@@ -20,6 +20,7 @@ import UserList from '@/pages/dashboard/UserList.vue'
 import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
 import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
 import ResetPassword from '@/pages/auth/ResetPassword.vue'
+import Cooking from '../pages/kitchen/Cooking.vue'
 
 /**
  * Route definitions
@@ -65,6 +66,7 @@ const routes = [
 
   {path :'/create_unitpage' , component: CreateUnit },
   { path: "/create_menu", component: CreateMenu },
+  { path: '/cooking' , component: Cooking},
 ]
 
 const router = createRouter({
