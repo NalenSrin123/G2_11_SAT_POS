@@ -24,6 +24,8 @@
 
 <script setup>
 import PreText from './PreText.vue';
+import DeliveryInfo from './DeliveryInfo.vue'
+import PaymentMethod from './PaymentMethod.vue'
 
 /**
  * Navigation links for demo pages.
@@ -91,6 +93,12 @@ const navLinks = [
       <!-- Project structure (rendered by PreText.vue) -->
       <div class="p-2 overflow-auto flex-1">
         <PreText />
+      </div>
+
+      <!-- Checkout Components -->
+      <div class="p-2 flex flex-col gap-2 border-t border-black/10">
+        <DeliveryInfo />
+        <PaymentMethod />
       </div>
 
     </div>
