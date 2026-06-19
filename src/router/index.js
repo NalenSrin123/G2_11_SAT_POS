@@ -7,6 +7,8 @@ import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
 import Configuration from '@/pages/dashboard/Configuration.vue'
+import ExploreCategory from '@/pages/dashboard/ExploreCategory.vue'
+
 
 const routes = [
   { path: '/', redirect: '/preview' },
@@ -16,6 +18,9 @@ const routes = [
 
  
   { path: '/configuration', component: Configuration },
+  { path: '/exploreCategory', component: ExploreCategory },
+
+  
 
   { path: '/login', component: Login },
   { path: '/register', component: Register },
