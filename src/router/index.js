@@ -7,7 +7,7 @@ import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
 import Configuration from '@/pages/dashboard/Configuration.vue'
-import ExploreCategory from '@/pages/dashboard/ExploreCategory.vue'
+import ExploreCategory from '@/Home/home/ExploreCategory.vue'
 
 
 const routes = [
