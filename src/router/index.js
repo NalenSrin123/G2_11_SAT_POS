@@ -20,6 +20,7 @@ import UserList from '@/pages/dashboard/UserList.vue'
 import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
 import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
 import ResetPassword from '@/pages/auth/ResetPassword.vue'
+import Completed from '../pages/kitchen/Completed.vue'
 
 /**
  * Route definitions
@@ -65,11 +66,11 @@ const routes = [
 
   {path :'/create_unitpage' , component: CreateUnit },
   { path: "/create_menu", component: CreateMenu },
+  {path:'/completed',component:Completed},
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
 })
-
 export default router
