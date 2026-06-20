@@ -50,6 +50,7 @@ import FrequentlyBoughtTogether from '../components/ui/FrequentlyBoughtTogether.
 import Design_list_product from '@/pages/kitchen/Design_list_product.vue'
 import ExploreCategory from '../pages/home/home/ExploreCategory.vue'
 import Completed from '../pages/kitchen/Completed.vue'
+import SidebarTable from '@/pages/cashier/SidebarTable.vue'
 
 
 import OrderSummary from '../pages/order/OrderSummary.vue'
@@ -105,6 +106,7 @@ const routes = [
   {path: '/Design_List_Product' , component: Design_list_product},
   {path:'/completed',component:Completed},
   { path: '/cashier', name: 'Cashier', component: Cashier },
+  {path: '/sidebartable', component: SidebarTable},
 ]
 
 const router = createRouter({
