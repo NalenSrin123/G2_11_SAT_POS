@@ -20,6 +20,7 @@ import UserList from '@/pages/dashboard/UserList.vue'
 import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
 import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
 import ResetPassword from '@/pages/auth/ResetPassword.vue'
+import MenuView from '../pages/public-site/MenuView.vue'
 
 /**
  * Route definitions
@@ -65,6 +66,7 @@ const routes = [
 
   {path :'/create_unitpage' , component: CreateUnit },
   { path: "/create_menu", component: CreateMenu },
+  {path:'/explore_menu',component:MenuView }
 ]
 
 const router = createRouter({
