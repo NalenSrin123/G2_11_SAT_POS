@@ -1,8 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Dashboard from '@/pages/dashboard/Dashboard.vue'
+import Create_Logo from '@/pages/dashboard/Create_Logo.vue'
+import Configuration from '@/pages/dashboard/Configuration.vue'
+import Listlogo from '@/pages/dashboard/ListLogo.vue'
+import Unitlish from '@/pages/dashboard/Unitlish.vue'
+import New_Dashboard from '@/pages/dashboard/New_Dashboard.vue'
+import Order_List from '@/pages/dashboard/Order_List.vue'
+import CategoryList from '@/pages/dashboard/CategoryList.vue'
+import Overview_Page from '@/pages/dashboard/Overview_Page.vue'
+import UserList from '@/pages/dashboard/UserList.vue'
+import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
+import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
+
+// Auth Pages
 import Login from '@/pages/auth/Login.vue'
 import Register from '@/pages/auth/Register.vue'
+import Confirm_OTP from '@/pages/auth/Confirm_OTP.vue'
+import ResetPassword from '@/pages/auth/ResetPassword.vue'
+
+// Other Pages
 import Preview from '@/pages/preview/Preview.vue'
 import Create_Logo from '@/pages/dashboard/Create_Logo.vue'
 import Home from '@/pages/home/Home.vue'
@@ -24,11 +41,8 @@ import Design_product_detail from '@/pages/public-site/Design_product_detail.vue
 import ExploreCategory from '@/Home/home/ExploreCategory.vue'
 import Trending from '@/pages/home/home/Trending.vue'
 import MenuView from '@/pages/public-site/MenuView.vue'
+import NewOrders from '@/pages/kitchen/NewOrders.vue'
 
-/**
- * Route definitions
- * Each route maps a URL path to a specific page component
- */
 const routes = [
   { path: '/', redirect: '/preview' },
 
@@ -53,11 +67,7 @@ const routes = [
   { path: '/register', component: Register },
   { path: '/resetpassword', component: ResetPassword },
 
-  /**
-   * Optional home route (disabled for now)
-   * Uncomment when switching from preview to real landing page
-   */
-  // { path: '/', component: Home },
+  // Home
   { path: '/home', component: Home },
 
   { path: '/:pathMatch(.*)*', component: NotFound },
@@ -74,7 +84,8 @@ const routes = [
   {path:"/Design_product_detail",component: Design_product_detail},
   { path: '/exploreCategory', component: ExploreCategory },
   { path: '/home/trending', name: 'Trending', component: Trending },
-  {path:'/explore_menu',component:MenuView }
+  {path:'/explore_menu',component:MenuView },
+  { path: '/neworders', component: NewOrders },
 ]
 
 const router = createRouter({
