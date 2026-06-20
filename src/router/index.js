@@ -1,23 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Dashboard from '@/pages/dashboard/Dashboard.vue'
-import Create_Logo from '@/pages/dashboard/Create_Logo.vue'
-import Configuration from '@/pages/dashboard/Configuration.vue'
-import Listlogo from '@/pages/dashboard/ListLogo.vue'
-import Unitlish from '@/pages/dashboard/Unitlish.vue'
-import New_Dashboard from '@/pages/dashboard/New_Dashboard.vue'
-import Order_List from '@/pages/dashboard/Order_List.vue'
-import CategoryList from '@/pages/dashboard/CategoryList.vue'
-import Overview_Page from '@/pages/dashboard/Overview_Page.vue'
-import UserList from '@/pages/dashboard/UserList.vue'
-import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
-import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
+// import Dashboard from '@/pages/dashboard/Dashboard.vue'
+// import Create_Logo from '@/pages/dashboard/Create_Logo.vue'
+// import Configuration from '@/pages/dashboard/Configuration.vue'
+// import Listlogo from '@/pages/dashboard/ListLogo.vue'
+// import Unitlish from '@/pages/dashboard/Unitlish.vue'
+// import New_Dashboard from '@/pages/dashboard/New_Dashboard.vue'
+// import Order_List from '@/pages/dashboard/Order_List.vue'
+// import CategoryList from '@/pages/dashboard/CategoryList.vue'
+// import Overview_Page from '@/pages/dashboard/Overview_Page.vue'
+// import UserList from '@/pages/dashboard/UserList.vue'
+// import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
+// import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
 
 // Auth Pages
 import Login from '@/pages/auth/Login.vue'
 import Register from '@/pages/auth/Register.vue'
-import Confirm_OTP from '@/pages/auth/Confirm_OTP.vue'
-import ResetPassword from '@/pages/auth/ResetPassword.vue'
+// import Confirm_OTP from '@/pages/auth/Confirm_OTP.vue'
+// import ResetPassword from '@/pages/auth/ResetPassword.vue'
 
 // Other Pages
 import Preview from '@/pages/preview/Preview.vue'
@@ -38,7 +38,7 @@ import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
 import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
 import ResetPassword from '@/pages/auth/ResetPassword.vue'
 import Design_product_detail from '@/pages/public-site/Design_product_detail.vue'
-import ExploreCategory from '@/Home/home/ExploreCategory.vue'
+
 import Trending from '@/pages/home/home/Trending.vue'
 import MenuView from '@/pages/public-site/MenuView.vue'
 import NewOrders from '@/pages/kitchen/NewOrders.vue'
@@ -47,6 +47,7 @@ import MainTableManagement from '@/pages/cashier/MainTableManagement.vue'
 import PaymentConfirmation from '../pages/cashier/PaymentConfirmation.vue'
 import FrequentlyBoughtTogether from '../components/ui/FrequentlyBoughtTogether.vue'
 import Design_list_product from '@/pages/kitchen/Design_list_product.vue'
+import ExploreCategory from '../pages/home/home/ExploreCategory.vue'
 
 
 const routes = [
@@ -60,7 +61,7 @@ const routes = [
    * Main application dashboard
    * Typically requires authentication (can add guards later)
    */
-  { path: '/dashboard', component: Dashboard },
+  { path: '/dashboard', component: New_Dashboard },
   { path: '/listlogo', component: Listlogo },
 
  

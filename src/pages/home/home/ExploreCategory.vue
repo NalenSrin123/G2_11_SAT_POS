@@ -74,7 +74,7 @@
 
 <script>
 export default {
-  name: 'ExploreCategories',
+  name: 'ExploreCategory',
   data() {
     return {
       hovered: null
