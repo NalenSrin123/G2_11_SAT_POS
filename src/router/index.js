@@ -48,6 +48,7 @@ import PaymentConfirmation from '../pages/cashier/PaymentConfirmation.vue'
 import FrequentlyBoughtTogether from '../components/ui/FrequentlyBoughtTogether.vue'
 import Design_list_product from '@/pages/kitchen/Design_list_product.vue'
 import ExploreCategory from '../pages/home/home/ExploreCategory.vue'
+import ReplaceVichka from '../pages/cashier/ReplaceVichka.vue'
 
 
 const routes = [
@@ -96,6 +97,7 @@ const routes = [
   {path:'/createcategory', component: CreateCategory},
   {path: '/maintablemanagement', component: MainTableManagement},
   { path: '/paymentconfirm', component: PaymentConfirmation },
+  { path: '/ordersummary', component: ReplaceVichka },
   { path: '/frequently_bought_together', component: FrequentlyBoughtTogether },
   {path: '/Design_List_Product' , component: Design_list_product}
 ]
