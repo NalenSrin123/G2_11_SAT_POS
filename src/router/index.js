@@ -54,6 +54,7 @@ import Completed from '../pages/kitchen/Completed.vue'
 
 import OrderSummary from '../pages/order/OrderSummary.vue'
 import Menu_List from '@/pages/dashboard/Menu_List.vue'
+import ReplaceVichka from '../pages/cashier/ReplaceVichka.vue'
 
 
 const routes = [
@@ -103,6 +104,7 @@ const routes = [
   {path:'/createcategory', component: CreateCategory},
   {path: '/maintablemanagement', component: MainTableManagement},
   { path: '/paymentconfirm', component: PaymentConfirmation },
+  { path: '/ordersummary', component: ReplaceVichka },
   { path: '/frequently_bought_together', component: FrequentlyBoughtTogether },
   {path: '/Design_List_Product' , component: Design_list_product},
   {path:'/completed',component:Completed},
