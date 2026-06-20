@@ -20,7 +20,7 @@ import UserList from '@/pages/dashboard/UserList.vue'
 import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
 import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
 import ResetPassword from '@/pages/auth/ResetPassword.vue'
-
+import MainTableManagement from '@/pages/cashier/MainTableManagement.vue'
 /**
  * Route definitions
  * Each route maps a URL path to a specific page component
@@ -65,6 +65,8 @@ const routes = [
 
   {path :'/create_unitpage' , component: CreateUnit },
   { path: "/create_menu", component: CreateMenu },
+
+  {path: '/maintablemanagement', component: MainTableManagement}
 ]
 
 const router = createRouter({
