@@ -50,6 +50,7 @@ import FrequentlyBoughtTogether from '../components/ui/FrequentlyBoughtTogether.
 import Design_list_product from '@/pages/kitchen/Design_list_product.vue'
 import ExploreCategory from '../pages/home/home/ExploreCategory.vue'
 import Completed from '../pages/kitchen/Completed.vue'
+import Cooking from '../pages/kitchen/Cooking.vue'
 
 
 import OrderSummary from '../pages/order/OrderSummary.vue'
@@ -91,6 +92,86 @@ const routes = [
 
   {path :'/create_unitpage' , component: CreateUnit },
   { path: "/create_menu", component: CreateMenu },
+/*
+|--------------------------------------------------------------------------
+| File: router/index.js
+|--------------------------------------------------------------------------
+|
+| Description:
+| Defines the application routes and navigation behavior using Vue Router.
+|
+| Responsibilities:
+| - Map URL paths to page components
+| - Configure default entry route
+| - Organize public and feature routes
+|
+| Notes:
+| - The root path ("/") currently redirects to "/preview" for demo purposes
+| - Update the root route to Home when moving to production
+|
+*/
+
+import { createRouter, createWebHistory } from 'vue-router'
+
+// Page components
+import Dashboard from '@/pages/dashboard/Dashboard.vue'
+import Login from '@/pages/auth/Login.vue'
+import Register from '@/pages/auth/Register.vue'
+import Preview from '@/pages/preview/Preview.vue'
+import Home from '@/pages/home/Home.vue'
+import NotFound from '@/pages/NotFound.vue'
+import LanguageConfig from '@/pages/dashboard/LanguageConfig.vue'
+
+
+/**
+ * Route definitions
+ * Each route maps a URL path to a specific page component
+ */
+const routes = [
+  /**
+   * Default entry route
+   * Redirects "/" to "/preview" to showcase the project structure
+   */
+  { path: '/', redirect: '/preview' },
+
+  /**
+   * Preview page (landing/demo screen)
+   * Displays project structure and navigation examples
+   */
+  { path: '/preview', component: Preview },
+
+  /**
+   * Main application dashboard
+   * Typically requires authentication (can add guards later)
+   */
+  { path: '/dashboard', component: Dashboard },
+
+  /**
+   * Authentication routes
+   */
+  { path: '/login', component: Login },
+  { path: '/register', component: Register },
+
+  /**
+   * Optional home route (disabled for now)
+   * Uncomment when switching from preview to real landing page
+   */
+  // { path: '/', component: Home },
+  { path: '/home', component: Home },
+
+  /**
+   * Catch-all route
+   * Displays a styled 404 page for unknown paths
+   */
+  { path: '/:pathMatch(.*)*', component: NotFound },
+
+  { path: '/dashboard/language-config', name: 'LanguageConfig', component: LanguageConfig }
+
+]
+
+/**
+ * Router instance configuration
+ */
 
 
   {path:"/Design_product_detail",component: Design_product_detail},
@@ -105,6 +186,7 @@ const routes = [
   {path: '/Design_List_Product' , component: Design_list_product},
   {path:'/completed',component:Completed},
   { path: '/cashier', name: 'Cashier', component: Cashier },
+    { path: '/cooking' , component: Cooking},
 ]
 
 const router = createRouter({
