@@ -21,6 +21,7 @@ import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
 import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
 import ResetPassword from '@/pages/auth/ResetPassword.vue'
 import Design_product_detail from '@/pages/public-site/Design_product_detail.vue'
+import ExploreCategory from '@/Home/home/ExploreCategory.vue'
 
 /**
  * Route definitions
@@ -69,6 +70,7 @@ const routes = [
 
 
   {path:"/Design_product_detail",component: Design_product_detail},
+  { path: '/exploreCategory', component: ExploreCategory },
 ]
 
 const router = createRouter({
