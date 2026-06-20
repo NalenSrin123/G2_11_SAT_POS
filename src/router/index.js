@@ -53,7 +53,7 @@ import Completed from '../pages/kitchen/Completed.vue'
 
 
 import OrderSummary from '../pages/order/OrderSummary.vue'
-import section from '../pages/section/section.vue'
+import section  from '../pages/home/home/Section.vue'
 
 const routes = [
   { path: '/', redirect: '/preview' },
