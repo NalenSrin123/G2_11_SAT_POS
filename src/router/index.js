@@ -45,6 +45,7 @@ import NewOrders from '@/pages/kitchen/NewOrders.vue'
 import CreateCategory from '@/pages/dashboard/CreateCategory.vue'
 import MainTableManagement from '@/pages/cashier/MainTableManagement.vue'
 import PaymentConfirmation from '../pages/cashier/PaymentConfirmation.vue'
+import FrequentlyBoughtTogether from '../components/ui/FrequentlyBoughtTogether.vue'
 
 const routes = [
   { path: '/', redirect: '/preview' },
@@ -92,6 +93,7 @@ const routes = [
   {path:'/createcategory', component: CreateCategory},
   {path: '/maintablemanagement', component: MainTableManagement},
   { path: '/paymentconfirm', component: PaymentConfirmation },
+  { path: '/frequently_bought_together', component: FrequentlyBoughtTogether },
 ]
 
 const router = createRouter({
