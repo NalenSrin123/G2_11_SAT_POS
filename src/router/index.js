@@ -51,6 +51,7 @@ import ExploreCategory from '../pages/home/home/ExploreCategory.vue'
 import Completed from '../pages/kitchen/Completed.vue'
 
 
+import OrderSummary from '../pages/order/OrderSummary.vue'
 
 const routes = [
   { path: '/', redirect: '/preview' },
@@ -78,6 +79,7 @@ const routes = [
 
   // Home
   { path: '/home', component: Home },
+  { path: '/order', component: OrderSummary},
 
   { path: '/:pathMatch(.*)*', component: NotFound },
   { path: '/Unitlish', component: Unitlish },
