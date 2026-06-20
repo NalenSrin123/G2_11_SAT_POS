@@ -44,6 +44,7 @@ import MenuView from '@/pages/public-site/MenuView.vue'
 import NewOrders from '@/pages/kitchen/NewOrders.vue'
 import CreateCategory from '@/pages/dashboard/CreateCategory.vue'
 import MainTableManagement from '@/pages/cashier/MainTableManagement.vue'
+import PaymentConfirmation from '../pages/cashier/PaymentConfirmation.vue'
 
 const routes = [
   { path: '/', redirect: '/preview' },
@@ -89,7 +90,8 @@ const routes = [
   {path:'/explore_menu',component:MenuView },
   { path: '/neworders', component: NewOrders },
   {path:'/createcategory', component: CreateCategory},
-   {path: '/maintablemanagement', component: MainTableManagement}
+  {path: '/maintablemanagement', component: MainTableManagement},
+  { path: '/paymentconfirm', component: PaymentConfirmation },
 ]
 
 const router = createRouter({
