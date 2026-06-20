@@ -55,6 +55,7 @@ import Completed from '../pages/kitchen/Completed.vue'
 import OrderSummary from '../pages/order/OrderSummary.vue'
 import Menu_List from '@/pages/dashboard/Menu_List.vue'
 import ReplaceVichka from '../pages/cashier/ReplaceVichka.vue'
+import Combines from '../pages/cashier/Combines.vue'
 
 
 const routes = [
@@ -80,6 +81,7 @@ const routes = [
   {path: '/confirm_otp',component:Confirm_OTP},
   { path: '/register', component: Register },
   { path: '/resetpassword', component: ResetPassword },
+  { path: '/combines', component: Combines },
 
   // Home
   { path: '/home', component: Home },
