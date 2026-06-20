@@ -48,6 +48,8 @@ import PaymentConfirmation from '../pages/cashier/PaymentConfirmation.vue'
 import FrequentlyBoughtTogether from '../components/ui/FrequentlyBoughtTogether.vue'
 import Design_list_product from '@/pages/kitchen/Design_list_product.vue'
 import ExploreCategory from '../pages/home/home/ExploreCategory.vue'
+import Completed from '../pages/kitchen/Completed.vue'
+
 
 
 const routes = [
@@ -97,7 +99,8 @@ const routes = [
   {path: '/maintablemanagement', component: MainTableManagement},
   { path: '/paymentconfirm', component: PaymentConfirmation },
   { path: '/frequently_bought_together', component: FrequentlyBoughtTogether },
-  {path: '/Design_List_Product' , component: Design_list_product}
+  {path: '/Design_List_Product' , component: Design_list_product},
+  {path:'/completed',component:Completed},
 ]
 
 const router = createRouter({
