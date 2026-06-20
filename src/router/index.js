@@ -6,75 +6,87 @@
 | Description:
 | Defines the application routes and navigation behavior using Vue Router.
 |
-| Responsibilities:
-| - Map URL paths to page components
-| - Configure default entry route
-| - Organize public and feature routes
-|
-| Notes:
-| - The root path ("/") currently redirects to "/preview" for demo purposes
-| - Update the root route to Home when moving to production
-|
 */
 
 import { createRouter, createWebHistory } from 'vue-router'
 
-// Page components
+// Dashboard Pages
 import Dashboard from '@/pages/dashboard/Dashboard.vue'
+import Create_Logo from '@/pages/dashboard/Create_Logo.vue'
+import Configuration from '@/pages/dashboard/Configuration.vue'
+import Listlogo from '@/pages/dashboard/ListLogo.vue'
+import Unitlish from '@/pages/dashboard/Unitlish.vue'
+import New_Dashboard from '@/pages/dashboard/New_Dashboard.vue'
+import Order_List from '@/pages/dashboard/Order_List.vue'
+import CategoryList from '@/pages/dashboard/CategoryList.vue'
+import Overview_Page from '@/pages/dashboard/Overview_Page.vue'
+import UserList from '@/pages/dashboard/UserList.vue'
+import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
+import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
+
+// Auth Pages
 import Login from '@/pages/auth/Login.vue'
 import Register from '@/pages/auth/Register.vue'
+import Confirm_OTP from '@/pages/auth/Confirm_OTP.vue'
+import ResetPassword from '@/pages/auth/ResetPassword.vue'
+
+// Other Pages
 import Preview from '@/pages/preview/Preview.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
-import List_logo from '@/pages/dashboard/list_logo.vue'
+import NewOrders from '@/pages/kitchen/NewOrders.vue'
 
-/**
- * Route definitions
- * Each route maps a URL path to a specific page component
- */
 const routes = [
-  /**
-   * Default entry route
-   * Redirects "/" to "/preview" to showcase the project structure
-   */
+  // Default
   { path: '/', redirect: '/preview' },
 
-  /**
-   * Preview page (landing/demo screen)
-   * Displays project structure and navigation examples
-   */
+  // Preview
   { path: '/preview', component: Preview },
 
-  /**
-   * Main application dashboard
-   * Typically requires authentication (can add guards later)
-   */
-  { path: '/dashboard', component: Dashboard },
-  { path: '/list_logo', component: List_logo },
-
-  /**
-   * Authentication routes
-   */
+  // Authentication
   { path: '/login', component: Login },
   { path: '/register', component: Register },
+  { path: '/confirm_otp', component: Confirm_OTP },
+  { path: '/resetpassword', component: ResetPassword },
 
-  /**
-   * Optional home route (disabled for now)
-   * Uncomment when switching from preview to real landing page
-   */
-  // { path: '/', component: Home },
+  // Home
   { path: '/home', component: Home },
 
-  /**
-   * Catch-all route
-   * Displays a styled 404 page for unknown paths
-   */
+  // Dashboard
+  { path: '/dashboard', component: Dashboard },
+  { path: '/newdashboard', component: New_Dashboard },
+
+  // Logo
+  { path: '/listlogo', component: Listlogo },
+  { path: '/createLogo', component: Create_Logo },
+
+  // Configuration
+  { path: '/configuration', component: Configuration },
+
+  // Orders
+  { path: '/order_list', component: Order_List },
+  { path: '/neworders', component: NewOrders },
+
+  // Category
+  { path: '/categorylist', component: CategoryList },
+
+  // User
+  { path: '/user_list', component: UserList },
+
+  // Unit
+  { path: '/Unitlish', component: Unitlish },
+  { path: '/create_unitpage', component: CreateUnit },
+
+  // Menu
+  { path: '/create_menu', component: CreateMenu },
+
+  // Overview
+  { path: '/overview_page', component: Overview_Page },
+
+  // 404
   { path: '/:pathMatch(.*)*', component: NotFound },
 ]
 
-/**
- * Router instance configuration
- */
 const router = createRouter({
   history: createWebHistory(),
   routes,
