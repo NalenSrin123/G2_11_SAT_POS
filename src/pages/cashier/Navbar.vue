@@ -13,7 +13,6 @@ const TABS = ["Floor Plan", "Staffing", "Inventory"];
 const activeTab = ref("Floor Plan");
 const query = ref("");
 </script>
-
 <template>
   <header
     class="w-full bg-white border-b border-gray-200 px-8 py-5 flex items-center justify-between gap-6 flex-wrap"
@@ -31,9 +30,7 @@ const query = ref("");
           @click="activeTab = tab"
           class="relative pb-1 text-sm font-medium transition-colors"
           :class="
-            tab === activeTab
-              ? 'text-orange-600'
-              : 'text-gray-500 hover:text-gray-800'
+            tab === activeTab ? 'text-orange-600' : 'text-gray-500 hover:text-gray-800'
           "
         >
           {{ tab }}
@@ -74,4 +71,5 @@ const query = ref("");
       </button>
     </div>
   </header>
-</template>~
+</template>
+~
