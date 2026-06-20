@@ -1,20 +1,13 @@
 <template>
-  <New_Dashboard>
-    <div class="flex h-screen bg-slate-50 font-sans">
-      <!-- MAIN -->
-      <main class="flex-1 overflow-auto px-5 py-6 max-w-5xl mx-auto">
-        <!-- Page Heading -->
-        <div
-          class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7"
-        >
-          <div>
-            <h1 class="text-2xl font-bold text-slate-800 tracking-tight">
-              Category List
-            </h1>
-            <p class="text-slate-500 text-sm mt-0.5">
-              Manage and organize your product categories and service groups.
-            </p>
-          </div>
+  <div class="min-h-screen bg-slate-50 font-sans">
+    <!-- MAIN -->
+    <main class="max-w-5xl mx-auto px-5 md:px-10 py-10">
+      <!-- Page Heading -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7">
+        <div>
+          <h1 class="text-2xl font-bold text-slate-800 tracking-tight">Category List</h1>
+          <p class="text-slate-500 text-sm mt-0.5">Manage and organize your product categories and service groups.</p>
+        </div>
           <button
             @click="openAdd"
             class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-1xl shadow transition-colors shrink-0"
@@ -533,7 +526,6 @@
         </div>
       </Transition>
     </div>
-  </New_Dashboard>
 </template>
 <script>
 import {
