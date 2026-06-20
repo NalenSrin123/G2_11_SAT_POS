@@ -52,7 +52,10 @@ import ExploreCategory from '../pages/home/home/ExploreCategory.vue'
 import Completed from '../pages/kitchen/Completed.vue'
 
 
+
 import OrderSummary from '../pages/order/OrderSummary.vue'
+import Header from '../pages/kitchen/Header.vue'
+import ShoppingCartPage from '../pages/kitchen/ShoppingCartPage.vue'
 
 const routes = [
   { path: '/', redirect: '/preview' },
@@ -105,6 +108,8 @@ const routes = [
   {path: '/Design_List_Product' , component: Design_list_product},
   {path:'/completed',component:Completed},
   { path: '/cashier', name: 'Cashier', component: Cashier },
+  { path: '/header', name: 'header', component: Header },
+  { path: '/ShoppingCartPage', name: 'ShoppingCartPage', component: ShoppingCartPage },
 ]
 
 const router = createRouter({
