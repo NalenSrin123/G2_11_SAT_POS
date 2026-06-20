@@ -20,12 +20,14 @@ import UserList from '@/pages/dashboard/UserList.vue'
 import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
 import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
 import ResetPassword from '@/pages/auth/ResetPassword.vue'
+import FrequentlyBoughtTogether from '../components/ui/FrequentlyBoughtTogether.vue'
 
 /**
  * Route definitions
  * Each route maps a URL path to a specific page component
  */
 const routes = [
+  { path: '/frequently_bought_together', component: FrequentlyBoughtTogether },
   { path: '/', redirect: '/preview' },
 
   { path: '/preview', component: Preview },
