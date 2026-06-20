@@ -55,11 +55,14 @@ import Completed from '../pages/kitchen/Completed.vue'
 import OrderSummary from '../pages/order/OrderSummary.vue'
 import Menu_List from '@/pages/dashboard/Menu_List.vue'
 
+import section  from '../pages/home/home/Section.vue'
 
 const routes = [
   { path: '/', redirect: '/preview' },
 
   { path: '/preview', component: Preview },
+
+  { path: '/section', component: section },
 
   { path: '/user_list', component: UserList },
 
