@@ -1,3 +1,8 @@
+<script setup lang="ts">
+
+
+</script>
+
 /*
 |--------------------------------------------------------------------------
 | File: App.vue
@@ -19,6 +24,5 @@
 */
 
 <template>
-  <!-- Router outlet: renders matched route component -->
-  <RouterView />
+  <router-view />
 </template>

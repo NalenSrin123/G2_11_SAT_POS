@@ -1,7 +1,8 @@
 <template>
-  <div class="min-h-screen bg-slate-50 p-8 flex justify-center items-start">
+  <New_Dashboard>
+  <div class="min-h-screen bg-slate-50  flex justify-center items-start">
+
     <div class="w-full max-w-5xl bg-white rounded-xl shadow-sm border border-slate-100 p-6">
-      
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <div>
           <h1 class="text-2xl font-bold text-slate-900 tracking-tight">User Directory</h1>
@@ -124,10 +125,12 @@
 
     </div>
   </div>
+  </New_Dashboard>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
+import New_Dashboard from './New_Dashboard.vue'
 // import { 
 //   Download as DownloadIcon, 
 //   UserPlus as UserPlusIcon, 
