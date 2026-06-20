@@ -20,7 +20,8 @@ import UserList from '@/pages/dashboard/UserList.vue'
 import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
 import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
 import ResetPassword from '@/pages/auth/ResetPassword.vue'
-import CreateCategory from '../pages/dashboard/CreateCategory.vue'
+import CreateCategory from '@/pages/dashboard/CreateCategory.vue'
+import Menu_List from '@/pages/dashboard/Menu_List.vue'
 /**
  * Route definitions
  * Each route maps a URL path to a specific page component
@@ -66,6 +67,7 @@ const routes = [
   {path :'/create_unitpage' , component: CreateUnit },
   { path: "/create_menu", component: CreateMenu },
   {path:'/createcategory', component: CreateCategory},
+  {path:'/Menu_list',component: Menu_List}
 ]
 
 const router = createRouter({
