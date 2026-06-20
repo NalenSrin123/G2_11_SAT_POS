@@ -38,6 +38,7 @@ import CreateUnit from '@/pages/dashboard/CreateUnit.vue'
 import CreateMenu from '@/pages/dashboard/CreateMenu.vue'
 import ResetPassword from '@/pages/auth/ResetPassword.vue'
 import Design_product_detail from '@/pages/public-site/Design_product_detail.vue'
+import Cashier from '@/pages/cashier/index.vue'
 
 import Trending from '@/pages/home/home/Trending.vue'
 import MenuView from '@/pages/public-site/MenuView.vue'
@@ -103,6 +104,7 @@ const routes = [
   { path: '/frequently_bought_together', component: FrequentlyBoughtTogether },
   {path: '/Design_List_Product' , component: Design_list_product},
   {path:'/completed',component:Completed},
+  { path: '/cashier', name: 'Cashier', component: Cashier },
 ]
 
 const router = createRouter({

@@ -12,6 +12,7 @@
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@lucide/vue": "^1.17.0",
     "chart.js": "^4.5.1",
+    "lucide-react": "^1.21.0",
     "lucide-vue-next": "^1.0.0",
     "tailwind": "^4.0.0",
     "vue": "^3.5.32",
