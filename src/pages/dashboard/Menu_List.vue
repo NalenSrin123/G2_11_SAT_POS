@@ -96,7 +96,7 @@ const getCategoryIcon = (category) => {
       <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between relative overflow-hidden">
         <div>
           <p class="text-sm font-medium text-slate-500">Total Items</p>
-          <h2 class="text-3xl font-bold text-slate-900 mt-2">{{ totalIt ems }}</h2>
+          <h2 class="text-3xl font-bold text-slate-900 mt-2">{{ totalItems }}</h2>
         </div>
         <span class="absolute top-5 right-5 inline-flex items-center px-2 py-1 rounded-md text-xs font-semibold bg-green-50 text-green-700">
           +12%
@@ -152,7 +152,7 @@ const getCategoryIcon = (category) => {
             >
               <td class="p-4 pl-6">
                 <div class="flex items-center gap-4">
-                  <div class="flex-shrink-0 w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600">
+                  <div class="shrink-0 w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600">
                     <component :is="getCategoryIcon(item.category)" class="w-5 h-5" />
                   </div>
                   <div>
@@ -230,5 +230,3 @@ const getCategoryIcon = (category) => {
 
   </div>
 </template>
-
-```44444444444444444444444444444444444

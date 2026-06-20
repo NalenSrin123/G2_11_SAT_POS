@@ -28,6 +28,7 @@ import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
 import Menu_List from '@/pages/dashboard/Menu_List.vue'
 
+
 /**
  * Route definitions
  * Each route maps a URL path to a specific page component
@@ -71,7 +72,7 @@ const routes = [
   { path: '/:pathMatch(.*)*', component: NotFound },
 
   
-  { path: '/:Menu_List', component: Menu_List},
+ {path: '/menu_list', component : Menu_List}
 ]
 
 /**
