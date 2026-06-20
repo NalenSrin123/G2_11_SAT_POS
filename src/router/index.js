@@ -23,6 +23,7 @@ import ResetPassword from '@/pages/auth/ResetPassword.vue'
 import Design_product_detail from '@/pages/public-site/Design_product_detail.vue'
 import ExploreCategory from '@/Home/home/ExploreCategory.vue'
 import Trending from '@/pages/home/home/Trending.vue'
+import MenuView from '@/pages/public-site/MenuView.vue'
 
 /**
  * Route definitions
@@ -73,6 +74,7 @@ const routes = [
   {path:"/Design_product_detail",component: Design_product_detail},
   { path: '/exploreCategory', component: ExploreCategory },
   { path: '/home/trending', name: 'Trending', component: Trending },
+  {path:'/explore_menu',component:MenuView }
 ]
 
 const router = createRouter({
