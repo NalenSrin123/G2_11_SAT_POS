@@ -53,6 +53,8 @@ import Completed from '../pages/kitchen/Completed.vue'
 
 
 import OrderSummary from '../pages/order/OrderSummary.vue'
+import Menu_List from '@/pages/dashboard/Menu_List.vue'
+
 
 const routes = [
   { path: '/', redirect: '/preview' },
@@ -105,6 +107,9 @@ const routes = [
   {path: '/Design_List_Product' , component: Design_list_product},
   {path:'/completed',component:Completed},
   { path: '/cashier', name: 'Cashier', component: Cashier },
+
+  
+ {path: '/menu_list', component : Menu_List}
 ]
 
 const router = createRouter({
