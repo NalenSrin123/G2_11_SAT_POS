@@ -78,6 +78,8 @@
 
 <script setup>
 import { computed } from "vue";
+import burgerImage from "../../../assets/image/order_burger.jpeg";
+import pizzaImage from "../../../assets/image/order_pizza.jpeg";
 
 const items = [
   {
@@ -86,8 +88,7 @@ const items = [
     note: "No onion and tomato",
     price: "$10.00",
     amount: 10,
-    image: new URL("../../assets/image/order_burger.jpeg", import.meta.url)
-      .href,
+    image: burgerImage,
   },
   {
     name: "Pizza",
@@ -95,7 +96,7 @@ const items = [
     note: "Much cheese and spicy",
     price: "$20.00",
     amount: 20,
-    image: new URL("../../assets/image/order_pizza.jpeg", import.meta.url).href,
+    image: pizzaImage,
   },
 ];
 
