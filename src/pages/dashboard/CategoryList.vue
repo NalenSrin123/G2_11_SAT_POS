@@ -1,4 +1,5 @@
 <template>
+  
   <New_Dashboard>
     <div class="flex h-screen bg-slate-50 font-sans">
       <!-- MAIN -->
