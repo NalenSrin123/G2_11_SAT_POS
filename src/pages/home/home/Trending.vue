@@ -1,11 +1,11 @@
 <template>
-  <div class="p-4 sm:p-8 lg:p-15">
-  <h1 class="font-bold text-2xl sm:text-3xl lg:text-4xl text-[#1b263b]">Trending Now</h1>
+  <div class="px-3 sm:px-7 lg:px-14 bg-white">
+  <h1 class="font-bold text-2xl sm:text-3xl lg:text-4xl text-black">Trending Now</h1>
   <p class="text-[#7f5539]">Most ordered items this week in your area.</p>
-  <div class="min-h-auto justify-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-15">
+  <div class="min-h-auto justify-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-15 py-5">
     <div 
         v-for="item in items":key="item.id"
-     class="w-full bg-white rounded-2xl shadow-lg overflow-hidden relative">
+     class="w-full bg-white rounded-2xl shadow-lg overflow-hidden relative transform duration-300 hover:scale-105">
         <h1 class=" absolute mt-3 rounded-2xl bg-white px-2 py-1 mx-4 font-medium text-[#1b263b]">{{ item.tags[0] }}</h1>
           <h1
   v-if="item.badge"
@@ -16,7 +16,7 @@
       <img
         :src="item.image"
         alt="Card Image"
-        class="w-full h-40 sm:h-52 md:h-60 object-cover"
+        class="w-full h-40 sm:h-52 md:h-60 object-cover "
       />
       
 
@@ -43,13 +43,9 @@
               </span>
             </h1>
            
-            <button class="bg-gray-700 rounded-3xl text-white p-2 sm:p-3">
-             <ShoppingCart 
-                fill="white" 
-                stroke-width="0" 
-                class="w-5 h-5 sm:w-6 sm:h-6 text-white transition-transform duration-300 group-hover:rotate-12"
-              />
-           </button>
+          <button class="group bg-gray-500 hover:bg-gray-600 rounded-full text-white p-3 sm:p-4 shadow-md transition-all duration-300 hover:scale-105">
+    <i class="fa-solid fa-cart-shopping text-lg sm:text-xl transition-transform duration-300 group-hover:rotate-12"></i>
+</button>
         </div>
        
       </div>
