@@ -56,6 +56,7 @@ import OrderSummary from '../pages/order/OrderSummary.vue'
 import Menu_List from '@/pages/dashboard/Menu_List.vue'
 import DesignProductDetail from '@/pages/public-site/DesignProductDetail.vue'
 import section  from '../pages/home/home/Section.vue'
+import Add_header_footer from '@/pages/public-site/Add_header_footer.vue'
 
 const routes = [
   { path: '/', redirect: '/preview' },
@@ -113,7 +114,8 @@ const routes = [
 
   
  {path: '/menu_list', component : Menu_List},
- {path: '/DesignProductDetail',component:DesignProductDetail}
+ {path: '/DesignProductDetail',component:DesignProductDetail},
+ {path: '/Add_header_footer',component:Add_header_footer}
 ]
 
 const router = createRouter({
