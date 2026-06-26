@@ -56,9 +56,16 @@ import OrderSummary from '../pages/order/OrderSummary.vue'
 import Menu_List from '@/pages/dashboard/Menu_List.vue'
 import DesignProductDetail from '@/pages/public-site/DesignProductDetail.vue'
 import section  from '../pages/home/home/Section.vue'
+import AddFooterHeaderToProductDetail from '../pages/public-site/AddFooterHeaderToProductDetail.vue';
 
 const routes = [
+  { 
+    path: '/add_footer_header_to_product_detail', 
+    component: AddFooterHeaderToProductDetail 
+  },
+
   { path: '/', redirect: '/preview' },
+  
 
   { path: '/preview', component: Preview },
 
