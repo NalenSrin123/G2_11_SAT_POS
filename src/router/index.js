@@ -52,6 +52,7 @@ import ExploreCategory from '../pages/home/home/ExploreCategory.vue'
 import Completed from '../pages/kitchen/Completed.vue'
 
 
+
 import OrderSummary from '../pages/order/OrderSummary.vue'
 import Menu_List from '@/pages/dashboard/Menu_List.vue'
 import DesignProductDetail from '@/pages/public-site/DesignProductDetail.vue'
@@ -59,6 +60,8 @@ import section  from '../pages/home/home/Section.vue'
 import ReplaceVichka from '../pages/cashier/ReplaceVichka.vue'
 import Combines from '../pages/cashier/Combines.vue'
 
+import Header from '../pages/kitchen/Header.vue'
+import ShoppingCartPage from '../pages/kitchen/ShoppingCartPage.vue'
 
 const routes = [
   { path: '/', redirect: '/preview' },
@@ -117,8 +120,10 @@ const routes = [
   { path: '/cashier', name: 'Cashier', component: Cashier },
 
   
- {path: '/menu_list', component : Menu_List},
- {path: '/DesignProductDetail',component:DesignProductDetail}
+  {path: '/menu_list', component : Menu_List},
+  {path: '/DesignProductDetail',component:DesignProductDetail},
+  { path: '/header', name: 'header', component: Header },
+  { path: '/ShoppingCartPage', name: 'ShoppingCartPage', component: ShoppingCartPage },
 ]
 
 const router = createRouter({
