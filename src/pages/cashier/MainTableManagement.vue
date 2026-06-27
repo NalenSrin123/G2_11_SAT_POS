@@ -1,353 +1,340 @@
 <template>
-  <!-- Toast Notification -->
-  <transition name="toast">
-    <div
-      v-if="toast.show"
-      class="fixed top-4 right-4 z-50 flex items-center gap-3 bg-gray-900 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl"
-    >
-      <span>{{ toast.icon }}</span>
-      <span>{{ toast.msg }}</span>
-    </div>
-  </transition>
-
-  <!-- Table Detail Modal -->
-  <transition name="modal">
-    <div
-      v-if="modal.open"
-      class="fixed inset-0 z-40 flex items-center justify-center"
-      @click.self="modal.open = false"
-    >
-      <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
-      <div class="relative bg-white rounded-2xl shadow-2xl w-80 p-6 z-10">
-        <button
-          class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-lg"
-          @click="modal.open = false"
-        >✕</button>
-        <div class="flex items-center gap-3 mb-4">
-          <div
-            class="w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold"
-            :class="modal.table?.vip ? 'bg-red-50 text-red-600' : 'bg-gray-100 text-gray-600'"
-          >{{ modal.table?.label }}</div>
-          <div>
-            <div class="font-bold text-gray-800 text-sm">{{ modal.table?.name }}</div>
-            <div class="text-xs text-gray-400">{{ modal.table?.section }}</div>
-            <span
-              class="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-bold"
-              :class="{
-                'bg-red-100 text-red-600': modal.table?.status === 'occupied',
-                'bg-green-100 text-green-600': modal.table?.status === 'available',
-                'bg-orange-100 text-orange-600': modal.table?.status === 'dirty'
-              }"
-            >{{ capitalize(modal.table?.status) }}</span>
-          </div>
-        </div>
-        <div v-if="modal.table?.server" class="flex justify-between text-xs text-gray-500 mb-2">
-          <span class="font-semibold text-gray-700">Server</span>
-          <span>{{ modal.table.server }}</span>
-        </div>
-        <div v-if="modal.table?.timer" class="flex justify-between text-xs text-gray-500 mb-2">
-          <span class="font-semibold text-gray-700">Seated</span>
-          <span>{{ modal.table.timer }}</span>
-        </div>
-        <div v-if="modal.table?.price" class="flex justify-between text-xs text-gray-500 mb-4">
-          <span class="font-semibold text-gray-700">Check Total</span>
-          <span class="text-red-600 font-bold">${{ modal.table.price }}</span>
-        </div>
-        <div class="grid grid-cols-3 gap-2 mt-2">
-          <button
-            v-for="s in ['occupied','available','dirty']" :key="s"
-            class="py-1.5 rounded-lg text-xs font-bold border transition-all"
-            :class="modal.table?.status === s
-              ? 'bg-red-600 text-white border-red-600'
-              : 'bg-gray-50 text-gray-500 border-gray-200 hover:bg-gray-100'"
-            @click="cycleStatus(modal.table, s)"
-          >{{ capitalize(s) }}</button>
-        </div>
-        <button
-          class="w-full mt-3 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-colors"
-          @click="modal.open = false"
-        >Close</button>
-      </div>
-    </div>
-  </transition>
-
-  <!-- Main App -->
-  <div class="rounded-2xl bg-gray-50 overflow-hidden max-w-4xl mx-auto my-5 shadow-xl font-sans relative">
-
-    <!-- TOP NAV -->
-    <nav class="bg-white border-b border-gray-100 px-5 py-3 flex items-center flex-wrap gap-2">
-      <span class="text-red-600 font-extrabold text-base mr-4 tracking-tight whitespace-nowrap">Marketplace Terminal</span>
-      <button
-        v-for="tab in tabs" :key="tab"
-        class="text-xs px-3 py-1 rounded border-b-2 transition-all font-medium"
-        :class="activeTab === tab
-          ? 'text-red-600 border-red-500 font-semibold'
-          : 'text-gray-400 border-transparent hover:text-red-500'"
-        @click="activeTab = tab"
-      >{{ tab }}</button>
-      <div class="ml-auto flex items-center gap-2">
-        <div class="relative hidden sm:block">
-          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">🔍</span>
-          <input
-            v-model="searchQuery"
-            class="bg-gray-100 rounded-full pl-7 pr-3 py-1.5 text-xs text-gray-600 outline-none focus:ring-2 focus:ring-red-200 w-44 transition-all"
-            placeholder="Search tables or servers…"
-          />
-        </div>
-        <button class="relative text-gray-500 hover:text-red-600 text-base px-1 transition-colors" @click="showAlertPanel = !showAlertPanel">
-          🔔
-          <span v-if="alertCount > 0" class="absolute -top-1 -right-1 bg-red-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">{{ alertCount }}</span>
-        </button>
-        <button class="text-gray-500 hover:text-red-600 text-base px-1 transition-colors" @click="refreshTimers">⟳</button>
-      </div>
-    </nav>
-
-    <!-- ALERT PANEL -->
-    <transition name="slide-down">
-      <div v-if="showAlertPanel" class="bg-red-50 border-b border-red-100 px-5 py-3">
-        <div class="text-xs font-bold text-red-700 mb-2 uppercase tracking-widest">Active Alerts</div>
-        <div v-for="t in alertTables" :key="t.id" class="flex items-center justify-between py-1.5 border-b border-red-100 last:border-0">
-          <span class="text-xs font-semibold text-gray-700">{{ t.name }}</span>
-          <span class="text-xs text-red-600 font-bold">{{ t.timer }}</span>
-          <button class="text-xs bg-red-600 text-white px-3 py-1 rounded-full hover:bg-red-700 transition-colors" @click="resolveAlert(t)">Resolve</button>
-        </div>
-        <div v-if="alertTables.length === 0" class="text-xs text-gray-400 italic">No active alerts</div>
-      </div>
-    </transition>
-
-    <!-- STATS BAR -->
-    <div class="bg-white px-5 py-3 flex items-center flex-wrap gap-6 border-b border-gray-100">
-      <div v-for="stat in stats" :key="stat.label">
-        <div class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">{{ stat.label }}</div>
-        <div class="text-xl font-extrabold" :class="stat.red ? 'text-red-600' : 'text-gray-800'">{{ stat.value }}</div>
-      </div>
-
-      <!-- Capacity Bar -->
-      <div class="hidden sm:block flex-1 min-w-[120px]">
-        <div class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mb-1">Capacity</div>
-        <div class="w-full bg-gray-100 rounded-full h-2">
-          <div
-            class="h-2 rounded-full transition-all duration-700"
-            :class="capacityPct > 80 ? 'bg-red-500' : capacityPct > 50 ? 'bg-amber-400' : 'bg-emerald-400'"
-            :style="{ width: capacityPct + '%' }"
-          ></div>
-        </div>
-      </div>
-
-      <div class="ml-auto flex gap-2">
-        <button
-          v-for="v in ['map','list']" :key="v"
-          class="text-xs px-3 py-1.5 rounded-lg border font-semibold transition-all"
-          :class="view === v
-            ? 'bg-white border-gray-300 text-gray-800 shadow-sm'
-            : 'bg-gray-50 border-gray-200 text-gray-400 hover:bg-gray-100'"
-          @click="view = v"
-        >{{ v === 'map' ? '⊞ Floor Map' : '≡ List View' }}</button>
-      </div>
-    </div>
-
-    <!-- ── FLOOR MAP VIEW ── -->
-    <template v-if="view === 'map'">
-
-      <!-- MAIN DINING ROOM -->
-      <div class="text-[10px] font-bold tracking-[.12em] text-gray-400 uppercase px-5 pt-5 pb-2">Main Dining Room</div>
-      <div class="flex flex-wrap gap-3 px-5 pb-5">
-        <div
-          v-for="t in filteredMainTables" :key="t.id"
-          class="relative flex flex-col items-center rounded-xl border-[1.5px] cursor-pointer transition-all duration-200 pt-4 pb-2.5 px-3 min-w-[112px] flex-1 max-w-[148px]"
-          :class="tableCardClass(t)"
-          @click="openModal(t)"
-          @mouseenter="hoveredId = t.id"
-          @mouseleave="hoveredId = null"
-        >
-          <!-- Timer badge -->
-          <span
-            v-if="t.timer"
-            class="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full whitespace-nowrap z-10"
-            :class="t.alert ? 'bg-red-600 animate-pulse' : 'bg-gray-800'"
-          >{{ t.timer }}</span>
-
-          <!-- Top seats -->
-          <div v-if="t.seats?.top" class="flex gap-1 mb-1">
-            <div v-for="(s,i) in t.seats.top" :key="i"
-              class="w-2.5 h-2.5 rounded-full border-2 border-white"
-              :class="s === 'dim' ? 'bg-gray-300' : 'bg-red-500'"
-            ></div>
-          </div>
-
-          <!-- Shape row -->
-          <div class="flex items-center gap-1">
-            <div v-if="t.seats?.left" class="flex flex-col gap-1">
-              <div v-for="(s,i) in t.seats.left" :key="i"
-                class="w-2.5 h-2.5 rounded-full border-2 border-white"
-                :class="s === 'dim' ? 'bg-gray-300' : 'bg-red-500'"
-              ></div>
-            </div>
-
-            <!-- Table body -->
-            <div
-              class="flex items-center justify-center font-bold text-lg my-1"
-              :class="tableShapeClass(t)"
-            >{{ t.label }}</div>
-
-            <div v-if="t.seats?.right" class="flex flex-col gap-1">
-              <div v-for="(s,i) in t.seats.right" :key="i"
-                class="w-2.5 h-2.5 rounded-full border-2 border-white"
-                :class="s === 'dim' ? 'bg-gray-300' : 'bg-red-500'"
-              ></div>
-            </div>
-          </div>
-
-          <!-- Bottom seats -->
-          <div v-if="t.seats?.bottom" class="flex gap-1 mt-1">
-            <div v-for="(s,i) in t.seats.bottom" :key="i"
-              class="w-2.5 h-2.5 rounded-full border-2 border-white"
-              :class="s === 'dim' ? 'bg-gray-300' : 'bg-red-500'"
-            ></div>
-          </div>
-
-          <div class="text-[11px] font-semibold text-gray-600 mt-1.5 text-center leading-tight">{{ t.name }}</div>
-          <div v-if="t.tooltip" class="text-[10px] font-semibold text-gray-800 text-center">{{ t.tooltip }}</div>
-          <div v-if="t.status === 'available'" class="text-[10px] text-gray-400 text-center">Available</div>
-          <div v-if="t.status === 'dirty'" class="text-[9px] font-extrabold text-red-500 uppercase tracking-wider mt-0.5">Needs Clearing</div>
-          <div v-if="t.server" class="text-[10px] text-gray-400 text-center">Server: {{ t.server }}</div>
-          <div v-if="t.price" class="text-[12px] font-extrabold text-red-600 mt-1">${{ t.price }}</div>
-
-          <!-- Hover tooltip name -->
-          <div
-            v-if="t.tooltipName && hoveredId === t.id"
-            class="absolute -bottom-2.5 left-1/2 -translate-x-1/2 translate-y-full bg-emerald-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-md whitespace-nowrap z-20"
-          >{{ t.tooltipName }}</div>
-        </div>
-      </div>
-
-      <!-- GARDEN PATIO -->
-      <div class="text-[10px] font-bold tracking-[.12em] text-gray-400 uppercase px-5 pt-2 pb-2">☀ Garden Patio</div>
-      <div class="flex flex-wrap gap-3 px-5 pb-5">
-        <div
-          v-for="t in filteredPatioTables" :key="t.id"
-          class="relative flex flex-col items-center rounded-xl border-[1.5px] cursor-pointer transition-all duration-200 pt-4 pb-2.5 px-3 min-w-[112px] flex-1 max-w-[148px]"
-          :class="tableCardClass(t)"
-          @click="openModal(t)"
-        >
-          <span
-            v-if="t.timer"
-            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full whitespace-nowrap z-10"
-          >{{ t.timer }}</span>
-          <div class="flex items-center justify-center font-bold text-lg my-2" :class="tableShapeClass(t)">{{ t.label }}</div>
-          <div class="text-[11px] font-semibold text-gray-600 text-center">{{ t.name }}</div>
-          <div v-if="t.sub" class="text-[10px] text-gray-400 text-center">{{ t.sub }}</div>
-          <div v-if="t.price" class="text-[12px] font-extrabold text-red-600 mt-1">${{ t.price }}</div>
-        </div>
-      </div>
-
-      <!-- LEGEND -->
-      <div class="flex flex-wrap gap-4 px-5 py-3 border-t border-gray-100">
-        <div class="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wider">
-          <span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span> Occupied
-        </div>
-        <div class="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wider">
-          <span class="w-2.5 h-2.5 rounded-full bg-gray-400 inline-block"></span> Available
-        </div>
-        <div class="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wider">
-          <span class="w-2.5 h-2.5 rounded-full bg-red-200 inline-block"></span> Dirty
-        </div>
-        <div class="ml-auto text-[10px] text-gray-400 italic">Click any table for details & actions</div>
-      </div>
-    </template>
-
-    <!--  LIST VIEW  -->
-    <template v-if="view === 'list'">
-      <div class="px-5 py-4 overflow-x-auto">
-        <table class="w-full text-xs border-collapse">
-          <thead>
-            <tr class="border-b border-gray-200">
-              <th
-                v-for="col in listCols" :key="col.key"
-                class="text-left py-2 px-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider cursor-pointer hover:text-gray-600 select-none"
-                @click="sortBy(col.key)"
-              >
-                {{ col.label }}
-                <span v-if="sort.key === col.key">{{ sort.asc ? ' ↑' : ' ↓' }}</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="t in sortedFilteredTables" :key="t.id"
-              class="border-b border-gray-50 hover:bg-red-50/40 cursor-pointer transition-colors"
-              @click="openModal(t)"
-            >
-              <td class="py-2.5 px-3 font-bold text-gray-700">{{ t.name }}</td>
-              <td class="py-2.5 px-3 text-gray-500">{{ t.section }}</td>
-              <td class="py-2.5 px-3">
-                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold"
-                  :class="{
-                    'bg-red-100 text-red-600': t.status === 'occupied',
-                    'bg-green-100 text-green-600': t.status === 'available',
-                    'bg-orange-100 text-orange-600': t.status === 'dirty'
-                  }"
-                >{{ capitalize(t.status) }}</span>
-              </td>
-              <td class="py-2.5 px-3 text-gray-500">{{ t.server || '—' }}</td>
-              <td class="py-2.5 px-3 text-gray-500">{{ t.timer || '—' }}</td>
-              <td class="py-2.5 px-3 font-bold text-red-600">{{ t.price ? '$' + t.price : '—' }}</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr class="border-t border-gray-200 bg-gray-50">
-              <td colspan="5" class="py-2 px-3 text-[10px] text-gray-400 font-semibold">Total Revenue</td>
-              <td class="py-2 px-3 font-extrabold text-red-600">${{ totalRevenue }}</td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </template>
-
-    <!-- QUICK ACTIONS -->
-    <transition name="slide-up">
+  <div class="flex min-h-screen bg-gray-100">
+    <sidebar_cashier/>
+    <!-- Toast Notification -->
+    <transition name="toast">
       <div
-        v-if="showQA"
-        class="absolute bottom-4 right-4 bg-white rounded-2xl shadow-2xl p-4 w-52 z-30 border border-gray-100"
+        v-if="toast.show"
+        class="fixed top-4 right-4 z-50 flex items-center gap-3 bg-gray-900 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl"
       >
-        <div class="flex items-center justify-between mb-3">
-          <span class="text-xs font-bold text-gray-800">Quick Actions</span>
-          <button class="text-gray-300 hover:text-gray-600 text-base transition-colors" @click="showQA = false">✕</button>
-        </div>
-        <div class="grid grid-cols-2 gap-2 mb-2">
-          <button
-            class="flex flex-col items-center gap-1 bg-red-50 hover:bg-red-100 border border-red-100 rounded-xl py-3 text-[10px] font-bold text-red-600 transition-colors"
-            @click="doAction('Join Tables')"
-          >
-            <span class="text-lg">🚶</span> Join Tables
-          </button>
-          <button
-            class="flex flex-col items-center gap-1 bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-xl py-3 text-[10px] font-bold text-gray-500 transition-colors"
-            @click="doAction('Transfer')"
-          >
-            <span class="text-lg">⇄</span> Transfer
-          </button>
-        </div>
-        <button
-          class="w-full bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-xl py-2 text-[10px] font-bold text-gray-600 transition-colors flex items-center justify-center gap-1.5"
-          @click="doAction('Reservation Log')"
-        >
-          🪑 Reservation Log
-        </button>
+        <span>{{ toast.icon }}</span>
+        <span>{{ toast.msg }}</span>
       </div>
     </transition>
-
-    <!-- FAB to reopen QA -->
-    <button
-      v-if="!showQA"
-      class="absolute bottom-4 right-4 bg-red-600 hover:bg-red-700 text-white w-10 h-10 rounded-full shadow-xl flex items-center justify-center text-lg z-30 transition-all"
-      @click="showQA = true"
-    >⚡</button>
+    <!-- Table Detail Modal -->
+    <transition name="modal">
+      <div
+        v-if="modal.open"
+        class="fixed inset-0 z-40 flex items-center justify-center"
+        @click.self="modal.open = false"
+      >
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+        <div class="relative bg-white rounded-2xl shadow-2xl w-80 p-6 z-10">
+          <button
+            class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-lg"
+            @click="modal.open = false"
+          >✕</button>
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold"
+              :class="modal.table?.vip ? 'bg-red-50 text-red-600' : 'bg-gray-100 text-gray-600'"
+            >{{ modal.table?.label }}</div>
+            <div>
+              <div class="font-bold text-gray-800 text-sm">{{ modal.table?.name }}</div>
+              <div class="text-xs text-gray-400">{{ modal.table?.section }}</div>
+              <span
+                class="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-bold"
+                :class="{
+                  'bg-red-100 text-red-600': modal.table?.status === 'occupied',
+                  'bg-green-100 text-green-600': modal.table?.status === 'available',
+                  'bg-orange-100 text-orange-600': modal.table?.status === 'dirty'
+                }"
+              >{{ capitalize(modal.table?.status) }}</span>
+            </div>
+          </div>
+          <div v-if="modal.table?.server" class="flex justify-between text-xs text-gray-500 mb-2">
+            <span class="font-semibold text-gray-700">Server</span>
+            <span>{{ modal.table.server }}</span>
+          </div>
+          <div v-if="modal.table?.timer" class="flex justify-between text-xs text-gray-500 mb-2">
+            <span class="font-semibold text-gray-700">Seated</span>
+            <span>{{ modal.table.timer }}</span>
+          </div>
+          <div v-if="modal.table?.price" class="flex justify-between text-xs text-gray-500 mb-4">
+            <span class="font-semibold text-gray-700">Check Total</span>
+            <span class="text-red-600 font-bold">${{ modal.table.price }}</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 mt-2">
+            <button
+              v-for="s in ['occupied','available','dirty']" :key="s"
+              class="py-1.5 rounded-lg text-xs font-bold border transition-all"
+              :class="modal.table?.status === s
+                ? 'bg-red-600 text-white border-red-600'
+                : 'bg-gray-50 text-gray-500 border-gray-200 hover:bg-gray-100'"
+              @click="cycleStatus(modal.table, s)"
+            >{{ capitalize(s) }}</button>
+          </div>
+          <button
+            class="w-full mt-3 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-colors"
+            @click="modal.open = false"
+          >Close</button>
+        </div>
+      </div>
+    </transition>
+    <!-- Main app -->
+    <div class=" bg-gray-50 overflow-hidden w-full shadow-xl font-sans relative h-screen">
+      <!-- Top nav -->
+      <nav class="bg-white border-b border-gray-100 px-5 py-3 flex items-center flex-wrap gap-2">
+        <span class="text-red-600 font-extrabold text-base mr-4 tracking-tight whitespace-nowrap">Marketplace Terminal</span>
+        <button
+          v-for="tab in tabs" :key="tab"
+          class="text-xs px-3 py-1 rounded border-b-2 transition-all font-medium"
+          :class="activeTab === tab
+            ? 'text-red-600 border-red-500 font-semibold'
+            : 'text-gray-400 border-transparent hover:text-red-500'"
+          @click="activeTab = tab"
+        >{{ tab }}</button>
+        <div class="ml-auto flex items-center gap-2">
+          <div class="relative hidden sm:block">
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">🔍</span>
+            <input
+              v-model="searchQuery"
+              class="bg-gray-100 rounded-full pl-7 pr-3 py-1.5 text-xs text-gray-600 outline-none focus:ring-2 focus:ring-red-200 w-44 transition-all"
+              placeholder="Search tables or servers…"
+            />
+          </div>
+          <button class="relative text-gray-500 hover:text-red-600 text-base px-1 transition-colors" @click="showAlertPanel = !showAlertPanel">
+            🔔
+            <span v-if="alertCount > 0" class="absolute -top-1 -right-1 bg-red-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">{{ alertCount }}</span>
+          </button>
+          <button class="text-gray-500 hover:text-red-600 text-base px-1 transition-colors" @click="refreshTimers">⟳</button>
+        </div>
+      </nav>
+      <!-- Alert panel -->
+      <transition name="slide-down">
+        <div v-if="showAlertPanel" class="bg-red-50 border-b border-red-100 px-5 py-3">
+          <div class="text-xs font-bold text-red-700 mb-2 uppercase tracking-widest">Active Alerts</div>
+          <div v-for="t in alertTables" :key="t.id" class="flex items-center justify-between py-1.5 border-b border-red-100 last:border-0">
+            <span class="text-xs font-semibold text-gray-700">{{ t.name }}</span>
+            <span class="text-xs text-red-600 font-bold">{{ t.timer }}</span>
+            <button class="text-xs bg-red-600 text-white px-3 py-1 rounded-full hover:bg-red-700 transition-colors" @click="resolveAlert(t)">Resolve</button>
+          </div>
+          <div v-if="alertTables.length === 0" class="text-xs text-gray-400 italic">No active alerts</div>
+        </div>
+      </transition>
+      <!-- Stats bar -->
+      <div class="bg-white px-5 py-3 flex items-center flex-wrap gap-6 border-b border-gray-100">
+        <div v-for="stat in stats" :key="stat.label">
+          <div class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">{{ stat.label }}</div>
+          <div class="text-xl font-extrabold" :class="stat.red ? 'text-red-600' : 'text-gray-800'">{{ stat.value }}</div>
+        </div>
+        <!-- Capacity Bar -->
+        <div class="hidden sm:block flex-1 min-w-[120px]">
+          <div class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mb-1">Capacity</div>
+          <div class="w-full bg-gray-100 rounded-full h-2">
+            <div
+              class="h-2 rounded-full transition-all duration-700"
+              :class="capacityPct > 80 ? 'bg-red-500' : capacityPct > 50 ? 'bg-amber-400' : 'bg-emerald-400'"
+              :style="{ width: capacityPct + '%' }"
+            ></div>
+          </div>
+        </div>
+  
+        <div class="ml-auto flex gap-2">
+          <button
+            v-for="v in ['map','list']" :key="v"
+            class="text-xs px-3 py-1.5 rounded-lg border font-semibold transition-all"
+            :class="view === v
+              ? 'bg-white border-gray-300 text-gray-800 shadow-sm'
+              : 'bg-gray-50 border-gray-200 text-gray-400 hover:bg-gray-100'"
+            @click="view = v"
+          >{{ v === 'map' ? '⊞ Floor Map' : '≡ List View' }}</button>
+        </div>
+      </div>
+      <!-- floor map view-->
+      <template v-if="view === 'map'">
+        <!-- Main dining room -->
+        <div class="text-[10px] font-bold tracking-[.12em] text-gray-400 uppercase px-5 pt-5 pb-2">Main Dining Room</div>
+        <div class="flex flex-wrap gap-3 px-5 pb-5">
+          <div
+            v-for="t in filteredMainTables" :key="t.id"
+            class="relative flex flex-col items-center rounded-xl border-[1.5px] cursor-pointer transition-all duration-200 pt-4 pb-2.5 px-3 min-w-[112px] flex-1 max-w-[148px]"
+            :class="tableCardClass(t)"
+            @click="openModal(t)"
+            @mouseenter="hoveredId = t.id"
+            @mouseleave="hoveredId = null"
+          >
+            <!-- Timer badge -->
+            <span
+              v-if="t.timer"
+              class="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full whitespace-nowrap z-10"
+              :class="t.alert ? 'bg-red-600 animate-pulse' : 'bg-gray-800'"
+            >{{ t.timer }}</span>
+            <!-- Top seats -->
+            <div v-if="t.seats?.top" class="flex gap-1 mb-1">
+              <div v-for="(s,i) in t.seats.top" :key="i"
+                class="w-2.5 h-2.5 rounded-full border-2 border-white"
+                :class="s === 'dim' ? 'bg-gray-300' : 'bg-red-500'"
+              ></div>
+            </div>
+            <!-- Shape row -->
+            <div class="flex items-center gap-1">
+              <div v-if="t.seats?.left" class="flex flex-col gap-1">
+                <div v-for="(s,i) in t.seats.left" :key="i"
+                  class="w-2.5 h-2.5 rounded-full border-2 border-white"
+                  :class="s === 'dim' ? 'bg-gray-300' : 'bg-red-500'"
+                ></div>
+              </div>
+              <!-- Table body -->
+              <div
+                class="flex items-center justify-center font-bold text-lg my-1"
+                :class="tableShapeClass(t)"
+              >{{ t.label }}</div>
+              <div v-if="t.seats?.right" class="flex flex-col gap-1">
+                <div v-for="(s,i) in t.seats.right" :key="i"
+                  class="w-2.5 h-2.5 rounded-full border-2 border-white"
+                  :class="s === 'dim' ? 'bg-gray-300' : 'bg-red-500'"
+                ></div>
+              </div>
+            </div>
+            <!-- Bottom seats -->
+            <div v-if="t.seats?.bottom" class="flex gap-1 mt-1">
+              <div v-for="(s,i) in t.seats.bottom" :key="i"
+                class="w-2.5 h-2.5 rounded-full border-2 border-white"
+                :class="s === 'dim' ? 'bg-gray-300' : 'bg-red-500'"
+              ></div>
+            </div>
+            <div class="text-[11px] font-semibold text-gray-600 mt-1.5 text-center leading-tight">{{ t.name }}</div>
+            <div v-if="t.tooltip" class="text-[10px] font-semibold text-gray-800 text-center">{{ t.tooltip }}</div>
+            <div v-if="t.status === 'available'" class="text-[10px] text-gray-400 text-center">Available</div>
+            <div v-if="t.status === 'dirty'" class="text-[9px] font-extrabold text-red-500 uppercase tracking-wider mt-0.5">Needs Clearing</div>
+            <div v-if="t.server" class="text-[10px] text-gray-400 text-center">Server: {{ t.server }}</div>
+            <div v-if="t.price" class="text-[12px] font-extrabold text-red-600 mt-1">${{ t.price }}</div>
+            <!-- Hover tooltip name -->
+            <div
+              v-if="t.tooltipName && hoveredId === t.id"
+              class="absolute -bottom-2.5 left-1/2 -translate-x-1/2 translate-y-full bg-emerald-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-md whitespace-nowrap z-20"
+            >{{ t.tooltipName }}</div>
+          </div>
+        </div>
+        <!-- GARDEN PATIO -->
+        <div class="text-[10px] font-bold tracking-[.12em] text-gray-400 uppercase px-5 pt-2 pb-2">☀ Garden Patio</div>
+        <div class="flex flex-wrap gap-3 px-5 pb-5">
+          <div
+            v-for="t in filteredPatioTables" :key="t.id"
+            class="relative flex flex-col items-center rounded-xl border-[1.5px] cursor-pointer transition-all duration-200 pt-4 pb-2.5 px-3 min-w-[112px] flex-1 max-w-[148px]"
+            :class="tableCardClass(t)"
+            @click="openModal(t)"
+          >
+            <span
+              v-if="t.timer"
+              class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full whitespace-nowrap z-10"
+            >{{ t.timer }}</span>
+            <div class="flex items-center justify-center font-bold text-lg my-2" :class="tableShapeClass(t)">{{ t.label }}</div>
+            <div class="text-[11px] font-semibold text-gray-600 text-center">{{ t.name }}</div>
+            <div v-if="t.sub" class="text-[10px] text-gray-400 text-center">{{ t.sub }}</div>
+            <div v-if="t.price" class="text-[12px] font-extrabold text-red-600 mt-1">${{ t.price }}</div>
+          </div>
+        </div>
+        <!-- Legend -->
+        <div class="flex flex-wrap gap-4 px-5 py-3 border-t border-gray-100">
+          <div class="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span> Occupied
+          </div>
+          <div class="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+            <span class="w-2.5 h-2.5 rounded-full bg-gray-400 inline-block"></span> Available
+          </div>
+          <div class="flex items-center gap-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-200 inline-block"></span> Dirty
+          </div>
+          <div class="ml-auto text-[10px] text-gray-400 italic">Click any table for details & actions</div>
+        </div>
+      </template>
+      <!--  list view  -->
+      <template v-if="view === 'list'">
+        <div class="px-5 py-4 overflow-x-auto">
+          <table class="w-full text-xs border-collapse">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th
+                  v-for="col in listCols" :key="col.key"
+                  class="text-left py-2 px-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider cursor-pointer hover:text-gray-600 select-none"
+                  @click="sortBy(col.key)"
+                >
+                  {{ col.label }}
+                  <span v-if="sort.key === col.key">{{ sort.asc ? ' ↑' : ' ↓' }}</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="t in sortedFilteredTables" :key="t.id"
+                class="border-b border-gray-50 hover:bg-red-50/40 cursor-pointer transition-colors"
+                @click="openModal(t)"
+              >
+                <td class="py-2.5 px-3 font-bold text-gray-700">{{ t.name }}</td>
+                <td class="py-2.5 px-3 text-gray-500">{{ t.section }}</td>
+                <td class="py-2.5 px-3">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold"
+                    :class="{
+                      'bg-red-100 text-red-600': t.status === 'occupied',
+                      'bg-green-100 text-green-600': t.status === 'available',
+                      'bg-orange-100 text-orange-600': t.status === 'dirty'
+                    }"
+                  >{{ capitalize(t.status) }}</span>
+                </td>
+                <td class="py-2.5 px-3 text-gray-500">{{ t.server || '—' }}</td>
+                <td class="py-2.5 px-3 text-gray-500">{{ t.timer || '—' }}</td>
+                <td class="py-2.5 px-3 font-bold text-red-600">{{ t.price ? '$' + t.price : '—' }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr class="border-t border-gray-200 bg-gray-50">
+                <td colspan="5" class="py-2 px-3 text-[10px] text-gray-400 font-semibold">Total Revenue</td>
+                <td class="py-2 px-3 font-extrabold text-red-600">${{ totalRevenue }}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </template>
+      <!-- Quick actions -->
+      <transition name="slide-up">
+        <div
+          v-if="showQA"
+          class="absolute bottom-4 right-4 bg-white rounded-2xl shadow-2xl p-4 w-52 z-30 border border-gray-100"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-gray-800">Quick Actions</span>
+            <button class="text-gray-300 hover:text-gray-600 text-base transition-colors" @click="showQA = false">✕</button>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mb-2">
+            <button
+              class="flex flex-col items-center gap-1 bg-red-50 hover:bg-red-100 border border-red-100 rounded-xl py-3 text-[10px] font-bold text-red-600 transition-colors"
+              @click="doAction('Join Tables')"
+            >
+              <span class="text-lg">🚶</span> Join Tables
+            </button>
+            <button
+              class="flex flex-col items-center gap-1 bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-xl py-3 text-[10px] font-bold text-gray-500 transition-colors"
+              @click="doAction('Transfer')"
+            >
+              <span class="text-lg">⇄</span> Transfer
+            </button>
+          </div>
+          <button
+            class="w-full bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-xl py-2 text-[10px] font-bold text-gray-600 transition-colors flex items-center justify-center gap-1.5"
+            @click="doAction('Reservation Log')"
+          >
+            🪑 Reservation Log
+          </button>
+        </div>
+      </transition>
+      <!-- FAB to reopen QA -->
+      <button
+        v-if="!showQA"
+        class="absolute bottom-4 right-4 bg-red-600 hover:bg-red-700 text-white w-10 h-10 rounded-full shadow-xl flex items-center justify-center text-lg z-30 transition-all"
+        @click="showQA = true"
+      >⚡</button>
+    </div>
   </div>
 </template>
 <script>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import Sidebar_cashier from '../../components/layout/Sidebar_cashier.vue';
 export default {
+  components: {
+    Sidebar_cashier,
+  },
   name: 'MarketplaceTerminal',
   setup() {
     //  State 
