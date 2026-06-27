@@ -25,7 +25,6 @@ import CreateCategory from '@/pages/dashboard/CreateCategory.vue'
 import Home from '@/pages/home/Home.vue'
 import Trending from '@/pages/home/home/Trending.vue'
 import ExploreCategory from '../pages/home/home/ExploreCategory.vue'
-import OrderSummary from '../pages/order/OrderSummary.vue'
 import NotFound from '@/pages/NotFound.vue'
 import LanguageConfig from '@/pages/dashboard/LanguageConfig.vue'
 import YourOrder from '../pages/preview/components/YourOrder.vue'
@@ -47,11 +46,10 @@ import FrequentlyBoughtTogether from '../components/ui/FrequentlyBoughtTogether.
 import KitchenLayout from '@/pages/kitchen/index.vue' // Import ទំព័រមេដែលមាន Sidebar
 import NewOrders from '@/pages/kitchen/NewOrders.vue'
 import Completed from '../pages/kitchen/Completed.vue'
-import SidebarTable from '@/pages/cashier/SidebarTable.vue'
+// import SidebarTable from '@/pages/cashier/SidebarTable.vue'
 
 
 
-import OrderSummary from '../pages/order/OrderSummary.vue'
 import Menu_List from '@/pages/dashboard/Menu_List.vue'
 import DesignProductDetail from '@/pages/public-site/DesignProductDetail.vue'
 import section  from '../pages/home/home/Section.vue'
@@ -63,7 +61,6 @@ import ShoppingCartPage from '../pages/kitchen/ShoppingCartPage.vue'
 import Design_list_product from '@/pages/kitchen/Design_list_product.vue'
 
 // Not Found Page
-import NotFound from '@/pages/NotFound.vue'
 import AddFooterHeaderToProductDetail from '../pages/public-site/AddFooterHeaderToProductDetail.vue';
 
 const routes = [
@@ -108,7 +105,6 @@ const routes = [
 
   // Home & Order
   { path: '/home', component: Home },
-  { path: '/order', component: OrderSummary },
   { path: '/exploreCategory', component: ExploreCategory },
   { path: '/home/trending', name: 'Trending', component: Trending },
   { path: '/explore_menu', component: MenuView },
@@ -130,7 +126,7 @@ const routes = [
   {path: '/DesignProductDetail',component:DesignProductDetail},
   { path: '/header', name: 'header', component: Header },
   { path: '/ShoppingCartPage', name: 'ShoppingCartPage', component: ShoppingCartPage },
-  {path: '/sidebartable', component: SidebarTable},
+  // {path: '/sidebartable', component: SidebarTable},
   { path: '/Design_product_detail', component: Design_product_detail },
 
   // ==========================================

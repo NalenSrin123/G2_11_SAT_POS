@@ -12,5 +12,5 @@
 <script setup>
 import Header from '@/pages/kitchen/Header.vue'
 import Design_list_product from '@/pages/kitchen/Design_list_product.vue'
-import OrderSummary from '@/pages/order/OrderSummary.vue'
+// import OrderSummary from '@/pages/order/OrderSummary.vue'
 </script>
