@@ -1,7 +1,6 @@
 <template>
     <nav class="navbar">
         <div class="logo">BistroMarket</div>
-        <h1>Hello wolrd</h1>
     <!-- Desktop nav links -->
     <div class="nav-links">
       <a href="#" class="active">Menu</a>
