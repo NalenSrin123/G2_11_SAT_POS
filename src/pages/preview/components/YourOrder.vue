@@ -67,10 +67,7 @@
       <div
         class="rounded-2xl border border-rose-100 bg-rose-50 p-4 text-sm text-rose-900 shadow-sm sm:p-5"
       >
-        <p>
-          Your order is protected by our Quality Guarantee. If you have any
-          problem contact us via email or tel: 0123456789.
-        </p>
+        <p>Your order is protected by our Quality Guarantee.</p>
       </div>
     </div>
   </div>
@@ -95,7 +92,8 @@ const items = [
     note: "Much cheese and spicy",
     price: "$20.00",
     amount: 20,
-    image: new URL("../../../assets/image/order_pizza.jpeg", import.meta.url).href,
+    image: new URL("../../../assets/image/order_pizza.jpeg", import.meta.url)
+      .href,
   },
 ];
 

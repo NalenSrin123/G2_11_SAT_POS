@@ -20,7 +20,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 // Page components
-import Dashboard from '@/pages/dashboard/Dashboard.vue'
+import Dashboard from '@/pages/auth/Dashboard.vue'
 import Login from '@/pages/auth/Login.vue'
 import Register from '@/pages/auth/Register.vue'
 import Preview from '@/pages/preview/Preview.vue'
@@ -29,6 +29,7 @@ import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
 import LanguageConfig from '@/pages/dashboard/LanguageConfig.vue'
 import YourOrder from '../pages/preview/components/YourOrder.vue'
+import OrderDelivery from '../pages/home/checkout/OrderDelivery.vue'
 
 
 /**
@@ -41,6 +42,7 @@ const routes = [
    * Redirects "/" to "/preview" to showcase the project structure
    */
   { path: '/', redirect: '/preview' },
+  { path: '/yourOrder', component: YourOrder },
 
   /**
    * Preview page (landing/demo screen)
@@ -67,7 +69,7 @@ const routes = [
    */
   // { path: '/', component: Home },
   { path: '/home', component: Home },
-  { path: '/yourOrder', component: YourOrder },
+  { path:'/order_delivery', component: OrderDelivery},
   { path: '/dashboard/language-config', name: 'LanguageConfig', component: LanguageConfig },
 
   /**
