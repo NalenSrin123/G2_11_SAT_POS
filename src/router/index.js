@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-// Auth Pages
+// Page components
+import Dashboard from '@/pages/auth/Dashboard.vue'
 import Login from '@/pages/auth/Login.vue'
 import Register from '@/pages/auth/Register.vue'
 import Confirm_OTP from '@/pages/auth/Confirm_OTP.vue'
@@ -25,6 +26,11 @@ import Home from '@/pages/home/Home.vue'
 import Trending from '@/pages/home/home/Trending.vue'
 import ExploreCategory from '../pages/home/home/ExploreCategory.vue'
 import OrderSummary from '../pages/order/OrderSummary.vue'
+import NotFound from '@/pages/NotFound.vue'
+import LanguageConfig from '@/pages/dashboard/LanguageConfig.vue'
+import YourOrder from '../pages/preview/components/YourOrder.vue'
+import OrderDelivery from '../pages/home/checkout/OrderDelivery.vue'
+
 
 // Public Site Pages
 import Preview from '@/pages/preview/Preview.vue'
@@ -65,6 +71,12 @@ const routes = [
     path: '/add_footer_header_to_product_detail', 
     component: AddFooterHeaderToProductDetail 
   },
+  /**
+   * Default entry route
+   * Redirects "/" to "/preview" to showcase the project structure
+   */
+  { path: '/', redirect: '/preview' },
+  { path: '/yourOrder', component: YourOrder },
 
   { path: '/', redirect: '/preview' },
   { path: '/preview', component: Preview },
@@ -100,6 +112,8 @@ const routes = [
   { path: '/exploreCategory', component: ExploreCategory },
   { path: '/home/trending', name: 'Trending', component: Trending },
   { path: '/explore_menu', component: MenuView },
+  { path:'/order_delivery', component: OrderDelivery},
+  { path: '/dashboard/language-config', name: 'LanguageConfig', component: LanguageConfig },
 
   // Cashier
   { path: '/cashier', name: 'Cashier', component: Cashier },

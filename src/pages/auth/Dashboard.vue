@@ -6,6 +6,8 @@
 </template>
 
 <script setup>
+import Create_Logo from "../dashboard/Create_Logo.vue";
+
 // Dashboard page (Composition API)
 </script>
 
