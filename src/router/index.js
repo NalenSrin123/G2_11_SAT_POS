@@ -59,7 +59,7 @@ import Combines from '../pages/cashier/Combines.vue'
 import Header from '../pages/kitchen/Header.vue'
 import ShoppingCartPage from '../pages/kitchen/ShoppingCartPage.vue'
 import Design_list_product from '@/pages/kitchen/Design_list_product.vue'
-
+import Menu_List from '@/pages/dashboard/Menu_List.vue'
 // Not Found Page
 import AddFooterHeaderToProductDetail from '../pages/public-site/AddFooterHeaderToProductDetail.vue';
 
@@ -128,6 +128,7 @@ const routes = [
   { path: '/ShoppingCartPage', name: 'ShoppingCartPage', component: ShoppingCartPage },
   // {path: '/sidebartable', component: SidebarTable},
   { path: '/Design_product_detail', component: Design_product_detail },
+  {path:'/Menu_list',component: Menu_List},
 
   // ==========================================
   // 🛠️ រៀបចំក្រុមផ្លូវរបស់ KITCHEN ឡើងវិញ (Nested Routes)

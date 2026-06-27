@@ -13,6 +13,7 @@ import {
   TrendingUp,
   CheckCircle2
 } from 'lucide-vue-next'
+import New_Dashboard from './New_Dashboard.vue'
 
 // Mock Data matching your interface metrics and table rows
 const totalItems = ref(124)
@@ -68,6 +69,7 @@ const getCategoryIcon = (category) => {
 </script>
 
 <template>
+  <New_Dashboard>
   <div class="min-h-screen bg-[#f8fafc] p-8 font-sans antialiased text-slate-800">
     
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
@@ -229,4 +231,5 @@ const getCategoryIcon = (category) => {
     </div>
 
   </div>
+</New_Dashboard>
 </template>

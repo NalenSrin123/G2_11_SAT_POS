@@ -22,7 +22,7 @@
           </router-link>
 
           <router-link
-            to="/menu_list"
+            to="/Menu_list"
             class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 transition"
           >
             <span class="material-icons text-slate-400">restaurant_menu</span>
