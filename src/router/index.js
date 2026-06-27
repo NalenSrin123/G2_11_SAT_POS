@@ -58,8 +58,14 @@ import Design_list_product from '@/pages/kitchen/Design_list_product.vue'
 
 // Not Found Page
 import NotFound from '@/pages/NotFound.vue'
+import AddFooterHeaderToProductDetail from '../pages/public-site/AddFooterHeaderToProductDetail.vue';
 
 const routes = [
+  { 
+    path: '/add_footer_header_to_product_detail', 
+    component: AddFooterHeaderToProductDetail 
+  },
+
   { path: '/', redirect: '/preview' },
   { path: '/preview', component: Preview },
 
