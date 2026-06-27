@@ -50,7 +50,6 @@ import Completed from '../pages/kitchen/Completed.vue'
 
 
 
-import Menu_List from '@/pages/dashboard/Menu_List.vue'
 import DesignProductDetail from '@/pages/public-site/DesignProductDetail.vue'
 import section  from '../pages/home/home/Section.vue'
 import ReplaceVichka from '../pages/cashier/ReplaceVichka.vue'
@@ -128,7 +127,6 @@ const routes = [
   { path: '/ShoppingCartPage', name: 'ShoppingCartPage', component: ShoppingCartPage },
   // {path: '/sidebartable', component: SidebarTable},
   { path: '/Design_product_detail', component: Design_product_detail },
-  {path:'/Menu_list',component: Menu_List},
 
   // ==========================================
   // 🛠️ រៀបចំក្រុមផ្លូវរបស់ KITCHEN ឡើងវិញ (Nested Routes)
