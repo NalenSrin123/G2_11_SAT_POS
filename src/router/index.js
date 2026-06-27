@@ -56,6 +56,9 @@ import OrderSummary from '../pages/order/OrderSummary.vue'
 import Menu_List from '@/pages/dashboard/Menu_List.vue'
 import DesignProductDetail from '@/pages/public-site/DesignProductDetail.vue'
 import section  from '../pages/home/home/Section.vue'
+import ReplaceVichka from '../pages/cashier/ReplaceVichka.vue'
+import Combines from '../pages/cashier/Combines.vue'
+
 
 const routes = [
   { path: '/', redirect: '/preview' },
@@ -82,6 +85,7 @@ const routes = [
   {path: '/confirm_otp',component:Confirm_OTP},
   { path: '/register', component: Register },
   { path: '/resetpassword', component: ResetPassword },
+  { path: '/combines', component: Combines },
 
   // Home
   { path: '/home', component: Home },
@@ -106,6 +110,7 @@ const routes = [
   {path:'/createcategory', component: CreateCategory},
   {path: '/maintablemanagement', component: MainTableManagement},
   { path: '/paymentconfirm', component: PaymentConfirmation },
+  { path: '/ordersummary', component: ReplaceVichka },
   { path: '/frequently_bought_together', component: FrequentlyBoughtTogether },
   {path: '/Design_List_Product' , component: Design_list_product},
   {path:'/completed',component:Completed},
