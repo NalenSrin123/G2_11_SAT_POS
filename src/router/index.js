@@ -27,7 +27,9 @@ import Preview from '@/pages/preview/Preview.vue'
 import Create_Logo from '@/pages/dashboard/Create_Logo.vue'
 import Home from '@/pages/home/Home.vue'
 import NotFound from '@/pages/NotFound.vue'
-import OrderSummary from '../pages/order/OrderSummary.vue'
+import LanguageConfig from '@/pages/dashboard/LanguageConfig.vue'
+import YourOrder from '../pages/preview/components/YourOrder.vue'
+
 
 /**
  * Route definitions
@@ -65,13 +67,15 @@ const routes = [
    */
   // { path: '/', component: Home },
   { path: '/home', component: Home },
-  { path: '/order', component: OrderSummary},
+  { path: '/yourOrder', component: YourOrder },
+  { path: '/dashboard/language-config', name: 'LanguageConfig', component: LanguageConfig },
 
   /**
    * Catch-all route
    * Displays a styled 404 page for unknown paths
    */
   { path: '/:pathMatch(.*)*', component: NotFound },
+
 ]
 
 /**
