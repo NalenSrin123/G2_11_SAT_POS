@@ -93,8 +93,8 @@ export default {
 }
 
 .explore-wrapper {
-  background-color: #faf8f5;
-  padding: 48px 40px;
+  background-color: white;
+  padding: 48px 48px;
   font-family: 'Inter', sans-serif;
   max-width: 100%;
   margin: 0 auto;
@@ -109,7 +109,7 @@ export default {
 }
 
 .explore-title {
-  font-size: 26px;
+  font-size: 36px;
   font-weight: 700;
   color: #1a1a1a;
   letter-spacing: -0.3px;
@@ -118,7 +118,7 @@ export default {
 
 .explore-subtitle {
   font-size: 13.5px;
-  color: #888;
+  color: #7f5539;
   margin-top: 4px;
   font-weight: 400;
 }
