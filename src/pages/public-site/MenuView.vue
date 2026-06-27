@@ -1,5 +1,6 @@
 <template>
-  <section class="max-w-7xl mx-auto px-4 py-8 bg-white text-black font-sans min-h-screen ">
+  <Header/>
+  <section class="max-w-8xl mx-auto px-4 py-8 bg-white text-black font-sans min-h-screen ">
     
     <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-900">Explore Our Menu</h2>
 
@@ -218,10 +219,13 @@
       </div>
     </div>
   </section>
+  <Footer/>
 </template>
 
 <script setup>
 import { ref, computed, watch } from 'vue'
+import Header from '../kitchen/Header.vue'
+import Footer from '../kitchen/Footer.vue'
 
 // --- គ្រប់គ្រងទំព័រ (Pagination) ---
 const currentPage = ref(1)
