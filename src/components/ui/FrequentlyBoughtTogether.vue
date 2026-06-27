@@ -152,7 +152,6 @@ export default {
       window.addEventListener('touchmove', this.onTouchMove, { passive: true });
       window.addEventListener('touchend',  this.onTouchEnd);
     },
-
     startDrag(e) {
       if (this.animFrame) cancelAnimationFrame(this.animFrame);
       this.isDragging      = true;
@@ -162,7 +161,6 @@ export default {
       this.lastX           = this.startX;
       this.lastTime        = Date.now();
     },
-
     onMouseMove(e) { this.moveDrag(e); },
     onTouchMove(e) { this.moveDrag(e); },
 
@@ -186,7 +184,6 @@ export default {
       const snapped = Math.round(Math.max(0, Math.min(this.maxScroll, raw)) / this.stepWidth) * this.stepWidth;
       this.animateToX(snapped);
     },
-
     animateToX(target) {
       const from = this.scrollX, duration = 380, start = performance.now();
       const ease = t => 1 - Math.pow(1 - t, 3);

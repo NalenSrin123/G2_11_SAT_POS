@@ -13,7 +13,6 @@ const TABS = ["Floor Plan", "Staffing", "Inventory"];
 const activeTab = ref("Floor Plan");
 const query = ref("");
 </script>
-
 <template>
   <header class="w-full bg-white border-b border-gray-200 px-8 py-5 flex items-center justify-between gap-6 flex-wrap">
     <!-- Left: title + tabs -->
@@ -23,11 +22,15 @@ const query = ref("");
       </h1>
 
       <nav class="flex items-center gap-6">
-        <button v-for="tab in TABS" :key="tab" @click="activeTab = tab"
-          class="relative pb-1 text-sm font-medium transition-colors" :class="tab === activeTab
-              ? 'text-orange-600'
-              : 'text-gray-500 hover:text-gray-800'
-            ">
+        <button
+          v-for="tab in TABS"
+          :key="tab"
+          @click="activeTab = tab"
+          class="relative pb-1 text-sm font-medium transition-colors"
+          :class="
+            tab === activeTab ? 'text-orange-600' : 'text-gray-500 hover:text-gray-800'
+          "
+        >
           {{ tab }}
           <span v-if="tab === activeTab" class="absolute left-0 -bottom-0.5 h-0.5 w-full bg-orange-600 rounded-full" />
         </button>
@@ -55,4 +58,5 @@ const query = ref("");
       </button>
     </div>
   </header>
-</template>~
+</template>
+~
